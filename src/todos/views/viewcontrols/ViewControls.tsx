@@ -20,9 +20,12 @@ export default function ViewControls() {
   const [viewMode, setViewMode] = useState<ViewMode>('dark');
   const [viewType, setViewType] = useState<ViewType>('list');
 
-  const { switchToDarkMode, switchToLightMode } = useViewControlsStore(
-    (store) => store.actions
-  );
+  const {
+    switchToDarkMode,
+    switchToLightMode,
+    switchToTodosListView,
+    switchToTodosTableView
+  } = useViewControlsStore((store) => store.actions);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   function changeViewType(event: MouseEvent<HTMLElement>, viewType: any) {
@@ -42,10 +45,10 @@ export default function ViewControls() {
         size="small"
         value={viewType}
       >
-        <ToggleButton value="list">
+        <ToggleButton onClick={switchToTodosListView} value="list">
           <FormatListBulleted />
         </ToggleButton>
-        <ToggleButton value="table">
+        <ToggleButton onClick={switchToTodosTableView} value="table">
           <GridOn />
         </ToggleButton>
       </ToggleButtonGroup>

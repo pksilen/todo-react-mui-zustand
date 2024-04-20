@@ -20,14 +20,19 @@ const initialTheme = createTheme({
 
 export type ViewType = 'list' | 'table';
 
-interface ViewControlsStore {
+interface State {
   theme: typeof initialTheme;
   viewType: ViewType;
-  actions: {
-    switchToDarkMode: () => void;
-    switchToLightMode: () => void;
-  };
 }
+
+interface Actions {
+  switchToDarkMode: () => void;
+  switchToLightMode: () => void;
+  switchToTodosListView: () => void;
+  switchToTodosTableView: () => void;
+}
+
+type ViewControlsStore = State & { actions: Actions };
 
 const useViewControlsStore = create<ViewControlsStore>()((setState) => ({
   theme: initialTheme,
@@ -50,8 +55,8 @@ const useViewControlsStore = create<ViewControlsStore>()((setState) => ({
         })
       })),
 
-    switchToListViewMode: () => setState((store) => ({ viewType: 'list' })),
-    switchToTableViewMode: () => setState((store) => ({ viewType: 'table' }))
+    switchToTodosListView: () => setState((store) => ({ viewType: 'list' })),
+    switchToTodosTableView: () => setState((store) => ({ viewType: 'table' }))
   }
 }));
 

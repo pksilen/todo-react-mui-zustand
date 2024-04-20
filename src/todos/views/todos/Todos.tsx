@@ -1,20 +1,27 @@
-import { List } from '@mui/material';
+import { Typography } from '@mui/material';
 import useTodosStore from '../../model/todosStore';
 import { Todo } from '../../model/Todo';
-import TodoListItem from './TodoListItem';
 import classNames from './Todos.module.scss';
+import { useEffect } from 'react';
+import TodosViewFactory from './TodosViewFactory';
+import useViewControlsStore from '../../model/viewControlsStore';
 
 export default function Todos() {
-  const todos = useTodosStore((store) => store.todos);
-  const todoFilterText = useTodosStore((store) => store.todoFilterText);
+  const { isLoading, todoFilterText, todos } = useTodosStore((store) => store);
+  const { fetchTodos } = useTodosStore((store) => store.actions);
+  const viewType = useViewControlsStore((store) => store.viewType);
+  useEffect(() => fetchTodos, [fetchTodos]);
 
   const todoListItems = todos
     .filter(({ title }) => title.includes(todoFilterText))
-    .map((todo: Todo) => <TodoListItem todo={todo} />);
+    .map((todo: Todo) => TodosViewFactory.createTodoView(viewType, todo));
 
   return (
     <div className={classNames.container}>
-      <List>{todoListItems}</List>
+      {isLoading && <Typography variant="h4">Loading todos...</Typography>}
+      {todos.length
+        ? TodosViewFactory.createTodosView(viewType, todoListItems)
+        : ''}
     </div>
   );
 }
