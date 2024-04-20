@@ -13,12 +13,17 @@ import {
 import classNames from './ViewControls.module.scss';
 import useViewControlsStore, { ViewType } from '../../model/viewControlsStore';
 import { MouseEvent, useState } from 'react';
+import useTodosStore from '../../model/todosStore';
 
 type ViewMode = 'dark' | 'light';
 
 export default function ViewControls() {
   const [viewMode, setViewMode] = useState<ViewMode>('dark');
   const [viewType, setViewType] = useState<ViewType>('list');
+
+  const { toggleShouldShowUndoneOnly } = useTodosStore(
+    (store) => store.actions
+  );
 
   const {
     switchToDarkMode,
@@ -52,7 +57,10 @@ export default function ViewControls() {
           <GridOn />
         </ToggleButton>
       </ToggleButtonGroup>
-      <FormControlLabel control={<Switch />} label="Show undone only" />
+      <FormControlLabel
+        control={<Switch onClick={toggleShouldShowUndoneOnly} />}
+        label="Show undone only"
+      />
       <ToggleButtonGroup
         exclusive
         onChange={changeViewMode}

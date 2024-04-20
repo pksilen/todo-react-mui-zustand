@@ -7,13 +7,20 @@ import TodosViewFactory from './TodosViewFactory';
 import useViewControlsStore from '../../model/viewControlsStore';
 
 export default function Todos() {
-  const { isLoading, todoFilterText, todos } = useTodosStore((store) => store);
+  const { isLoading, lowerCaseTodoFilterText, shouldShowUndoneOnly, todos } =
+    useTodosStore((store) => store);
+
   const { fetchTodos } = useTodosStore((store) => store.actions);
   const viewType = useViewControlsStore((store) => store.viewType);
   useEffect(() => fetchTodos, [fetchTodos]);
 
   const todoListItems = todos
-    .filter(({ title }) => title.includes(todoFilterText))
+    .filter(({ title }) =>
+      title.toLowerCase().includes(lowerCaseTodoFilterText)
+    )
+    .filter(
+      ({ isDone }) => (shouldShowUndoneOnly && !isDone) || !shouldShowUndoneOnly
+    )
     .map((todo: Todo) => TodosViewFactory.createTodoView(viewType, todo));
 
   return (

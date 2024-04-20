@@ -5,33 +5,30 @@ import todoService from '../service/FakeTodoService';
 
 interface State {
   isLoading: boolean;
+  lowerCaseTodoFilterText: string;
+  shouldShowUndoneOnly: boolean;
   todos: Todo[];
-  todoFilterText: string;
 }
 
 interface Actions {
-  fetchTodos: () => void;
   addTodo: (title: string) => void;
   editTodo: (id: string, newTitle: string) => void;
-  toggleTodoDone: (id: string) => void;
+  fetchTodos: () => void;
   removeTodo: (id: string) => void;
   setTodoFilter: (text: string) => void;
+  toggleShouldShowUndoneOnly: () => void;
+  toggleTodoDone: (id: string) => void;
 }
 
 type TodosStore = State & { actions: Actions };
 
 const useTodosStore = create<TodosStore>()((setState, getState) => ({
   isLoading: false,
+  lowerCaseTodoFilterText: '',
+  shouldShowUndoneOnly: false,
   todos: [],
-  todoFilterText: '',
 
   actions: {
-    fetchTodos: async () => {
-      setState({ isLoading: true });
-      const todos = await todoService.getTodos();
-      setState({ isLoading: false, todos });
-    },
-
     addTodo: (title: string) =>
       setState({
         todos: [...getState().todos, { id: uuidv4(), title, isDone: false }]
@@ -44,19 +41,29 @@ const useTodosStore = create<TodosStore>()((setState, getState) => ({
         )
       }),
 
-    toggleTodoDone: (id: string) =>
-      setState({
-        todos: getState().todos.map((todo) =>
-          todo.id === id ? { ...todo, isDone: !todo.isDone } : todo
-        )
-      }),
+    fetchTodos: async () => {
+      setState({ isLoading: true });
+      const todos = await todoService.getTodos();
+      setState({ isLoading: false, todos });
+    },
 
     removeTodo: (id: string) =>
       setState({
         todos: getState().todos.filter((todo) => todo.id !== id)
       }),
 
-    setTodoFilter: (text: string) => setState({ todoFilterText: text })
+    toggleShouldShowUndoneOnly: () =>
+      setState({ shouldShowUndoneOnly: !getState().shouldShowUndoneOnly }),
+
+    setTodoFilter: (text: string) =>
+      setState({ lowerCaseTodoFilterText: text.toLowerCase() }),
+
+    toggleTodoDone: (id: string) =>
+      setState({
+        todos: getState().todos.map((todo) =>
+          todo.id === id ? { ...todo, isDone: !todo.isDone } : todo
+        )
+      })
   }
 }));
 
