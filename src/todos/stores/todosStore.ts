@@ -1,7 +1,7 @@
-import { create } from 'zustand';
-import { Todo } from './Todo';
-import todoService from '../service/FakeTodoService';
 import { v4 as uuidv4 } from 'uuid';
+import { create } from 'zustand';
+import todoService from '../services/FakeTodoService';
+import { Todo } from './Todo';
 
 interface State {
   hasError: boolean;

@@ -18,20 +18,6 @@ describe('TodoServiceImpl', () => {
       expect(error).toBeNull();
     });
 
-    it('return an error when fetch throws', async () => {
-      // GIVEN
-      global.fetch = jest.fn().mockImplementation(() => {
-        throw new Error();
-      });
-
-      // WHEN
-      const [todos, error] = await todoService.getTodos();
-
-      // THEN
-      expect(todos).toEqual([]);
-      expect(error).toBeTruthy();
-    });
-
     it('returns an error when unable to connect the server', async () => {
       // GIVEN
       global.fetch = jest.fn().mockImplementation(() => {
@@ -46,9 +32,26 @@ describe('TodoServiceImpl', () => {
       expect(error).toBeTruthy();
     });
 
+    it('returns an error when response json parsing fails', async () => {
+      // GIVEN
+      global.fetch = jest.fn().mockImplementation(() => ({
+        json: jest.fn().mockImplementation(() => {
+          throw new Error('error');
+        })
+      }));
+
+      // WHEN
+      const [todos, error] = await todoService.getTodos();
+
+      // THEN
+      expect(todos).toEqual([]);
+      expect(error).toBeTruthy();
+    });
+
     it('returns an error when server response contains error', async () => {
       // GIVEN
       const errorResponseBody = { message: 'error' };
+
       global.fetch = jest.fn().mockImplementation(() => ({
         json: jest
           .fn()

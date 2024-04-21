@@ -1,7 +1,6 @@
 /* eslint-disable testing-library/no-unnecessary-act */
-import React from 'react';
-import user from '@testing-library/user-event';
 import { act, render, screen } from '@testing-library/react';
+import user from '@testing-library/user-event';
 import AddTodo from './AddTodo';
 
 const mockAddTodo = jest.fn();
@@ -43,9 +42,9 @@ describe('AddTodo', () => {
   it('does not add todo when todo title is empty', () => {
     // GIVEN
     render(<AddTodo />);
-    const todoTitleInput = screen.getByLabelText('Add new todo...');
+
     const addTodoButton = screen.getByRole('button', {
-      name: `Add todo`
+      name: /Add todo/i
     });
 
     // WHEN
