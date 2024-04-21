@@ -1,7 +1,7 @@
-import { ViewType } from '../../model/viewControlsStore';
+import { ViewType } from '../../stores/viewControlsStore';
 import { ReactNode } from 'react';
 import { List, Table, TableBody } from '@mui/material';
-import { Todo } from '../../model/Todo';
+import { Todo } from '../../stores/Todo';
 import TodoListItem from './TodoListItem';
 import TodoTableRow from './TodoTableRow';
 

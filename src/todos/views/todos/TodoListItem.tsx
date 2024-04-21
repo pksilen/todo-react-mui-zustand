@@ -1,7 +1,7 @@
 import { Button, ListItem, ListItemIcon, ListItemText } from '@mui/material';
 import { TaskAlt } from '@mui/icons-material';
-import { Todo } from '../../model/Todo';
-import useTodosStore from '../../model/todosStore';
+import { Todo } from '../../stores/Todo';
+import useTodosStore from '../../stores/todosStore';
 
 type Props = {
   todo: Todo;

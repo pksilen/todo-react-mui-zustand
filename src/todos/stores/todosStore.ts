@@ -1,9 +1,10 @@
 import { create } from 'zustand';
-import { v4 as uuidv4 } from 'uuid';
 import { Todo } from './Todo';
 import todoService from '../service/FakeTodoService';
+import { v4 as uuidv4 } from 'uuid';
 
 interface State {
+  hasError: boolean;
   isLoading: boolean;
   lowerCaseTodoFilterText: string;
   shouldShowUndoneOnly: boolean;
@@ -12,6 +13,7 @@ interface State {
 
 interface Actions {
   addTodo: (title: string) => void;
+  clearError: () => void;
   editTodo: (id: string, newTitle: string) => void;
   fetchTodos: () => void;
   removeTodo: (id: string) => void;
@@ -23,16 +25,20 @@ interface Actions {
 type TodosStore = State & { actions: Actions };
 
 const useTodosStore = create<TodosStore>()((setState, getState) => ({
+  hasError: false,
   isLoading: false,
   lowerCaseTodoFilterText: '',
   shouldShowUndoneOnly: false,
   todos: [],
 
   actions: {
-    addTodo: (title: string) =>
-      setState({
-        todos: [...getState().todos, { id: uuidv4(), title, isDone: false }]
-      }),
+    addTodo: async (title: string) => {
+      const todo = { id: uuidv4(), title, isDone: false };
+      const error = await todoService.createTodo(todo);
+      setState({ hasError: !!error, todos: [...getState().todos, todo] });
+    },
+
+    clearError: () => setState({ hasError: false }),
 
     editTodo: (id: string, newTitle: string) =>
       setState({
@@ -43,8 +49,8 @@ const useTodosStore = create<TodosStore>()((setState, getState) => ({
 
     fetchTodos: async () => {
       setState({ isLoading: true });
-      const todos = await todoService.getTodos();
-      setState({ isLoading: false, todos });
+      const [todos, error] = await todoService.getTodos();
+      setState({ hasError: !!error, isLoading: false, todos });
     },
 
     removeTodo: (id: string) =>

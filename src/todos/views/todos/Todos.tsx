@@ -1,10 +1,10 @@
 import { Typography } from '@mui/material';
-import useTodosStore from '../../model/todosStore';
-import { Todo } from '../../model/Todo';
+import useTodosStore from '../../stores/todosStore';
+import { Todo } from '../../stores/Todo';
 import classNames from './Todos.module.scss';
-import { useEffect } from 'react';
 import TodosViewFactory from './TodosViewFactory';
-import useViewControlsStore from '../../model/viewControlsStore';
+import useViewControlsStore from '../../stores/viewControlsStore';
+import { afterMount } from '../../../utils/utils';
 
 export default function Todos() {
   const { isLoading, lowerCaseTodoFilterText, shouldShowUndoneOnly, todos } =
@@ -12,7 +12,7 @@ export default function Todos() {
 
   const { fetchTodos } = useTodosStore((store) => store.actions);
   const viewType = useViewControlsStore((store) => store.viewType);
-  useEffect(() => fetchTodos, [fetchTodos]);
+  afterMount(fetchTodos);
 
   const todoListItems = todos
     .filter(({ title }) =>
@@ -25,10 +25,11 @@ export default function Todos() {
 
   return (
     <div className={classNames.container}>
-      {isLoading && <Typography variant="h4">Loading todos...</Typography>}
-      {todos.length
-        ? TodosViewFactory.createTodosView(viewType, todoListItems)
-        : ''}
+      {isLoading ? (
+        <Typography variant="h4">Loading todos...</Typography>
+      ) : (
+        TodosViewFactory.createTodosView(viewType, todoListItems)
+      )}
     </div>
   );
 }

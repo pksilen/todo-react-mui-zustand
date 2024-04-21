@@ -11,9 +11,9 @@ import {
   LightMode
 } from '@mui/icons-material';
 import classNames from './ViewControls.module.scss';
-import useViewControlsStore, { ViewType } from '../../model/viewControlsStore';
+import useViewControlsStore, { ViewType } from '../../stores/viewControlsStore';
 import { MouseEvent, useState } from 'react';
-import useTodosStore from '../../model/todosStore';
+import useTodosStore from '../../stores/todosStore';
 
 type ViewMode = 'dark' | 'light';
 

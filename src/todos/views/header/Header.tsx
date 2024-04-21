@@ -8,7 +8,7 @@ import {
 } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import classNames from './Header.module.scss';
-import useTodosStore, { getUndoneTodoCount } from '../../model/todosStore';
+import useTodosStore, { getUndoneTodoCount } from '../../stores/todosStore';
 
 const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
   '& .MuiBadge-badge': {

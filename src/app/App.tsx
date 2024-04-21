@@ -5,7 +5,8 @@ import { CssBaseline, ThemeProvider } from '@mui/material';
 import Todos from '../todos/views/todos/Todos';
 import AddTodo from '../todos/views/addtodo/AddTodo';
 import ViewControls from '../todos/views/viewcontrols/ViewControls';
-import useViewControlsStore from '../todos/model/viewControlsStore';
+import useViewControlsStore from '../todos/stores/viewControlsStore';
+import ErrorCatcher from '../todos/views/errorcatcher/ErrorCatcher';
 
 export default function App() {
   const theme = useViewControlsStore((store) => store.theme);
@@ -16,8 +17,10 @@ export default function App() {
         <CssBaseline />
         <Header />
         <ViewControls />
-        <Todos />
-        <AddTodo />
+        <ErrorCatcher>
+          <Todos />
+          <AddTodo />
+        </ErrorCatcher>
       </ThemeProvider>
     </div>
   );

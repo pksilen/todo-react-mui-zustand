@@ -1,26 +1,27 @@
 import { Button, TextField } from '@mui/material';
 import classNames from './AddTodo.module.scss';
-import useTodosStore from '../../model/todosStore';
+import useTodosStore from '../../stores/todosStore';
 import { useState } from 'react';
 
 export default function AddTodo() {
-  const [title, setTitle] = useState('');
+  const [todoTitle, setTodoTitle] = useState('');
   const { addTodo } = useTodosStore((store) => store.actions);
 
   function maybeAddTodo() {
-    if (title) {
-      addTodo(title);
-      setTitle('');
+    if (todoTitle) {
+      addTodo(todoTitle);
+      setTodoTitle('');
     }
   }
+
   return (
     <div className={classNames.container}>
       <TextField
         id="addtodo"
         fullWidth
         label="Add new todo..."
-        onChange={(event) => setTitle(event.target.value)}
-        value={title}
+        onChange={(event) => setTodoTitle(event.target.value)}
+        value={todoTitle}
         variant="standard"
       />
       <Button
@@ -29,7 +30,7 @@ export default function AddTodo() {
         variant="contained"
         sx={{ flexShrink: 0, marginLeft: '25px' }}
       >
-        Add Todo
+        Add todo
       </Button>
     </div>
   );
