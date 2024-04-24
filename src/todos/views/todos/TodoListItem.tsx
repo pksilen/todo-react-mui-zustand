@@ -1,7 +1,8 @@
-import { Button, ListItem, ListItemIcon, ListItemText } from '@mui/material';
 import { TaskAlt } from '@mui/icons-material';
+import { Button, ListItem, ListItemIcon, ListItemText } from '@mui/material';
 import { Todo } from '../../stores/Todo';
 import useTodosStore from '../../stores/todosStore';
+import classNames from './TodoListItem.module.scss';
 
 type Props = {
   todo: Todo;
@@ -19,20 +20,26 @@ export default function TodoListItem({ todo: { id, title, isDone } }: Props) {
       </ListItemIcon>
       <ListItemText
         primary={title}
-        sx={{ textDecoration: isDone ? 'line-through' : '' }}
+        sx={{
+          overflow: 'hidden',
+          textDecoration: isDone ? 'line-through' : '',
+          textOverflow: 'ellipsis'
+        }}
       />
-      <Button onClick={() => toggleTodoDone(id)} sx={{ flexShrink: 0 }}>
-        {isDone ? 'Mark undone' : 'Mark done'}
-      </Button>
-      <Button
-        onClick={() => editTodo(id, title + ' edited')}
-        sx={{ flexShrink: 0 }}
-      >
-        Edit
-      </Button>
-      <Button onClick={() => removeTodo(id)} sx={{ flexShrink: 0 }}>
-        Remove
-      </Button>
+      <div className={classNames.buttons}>
+        <Button onClick={() => toggleTodoDone(id)} sx={{ flexShrink: 0 }}>
+          {isDone ? 'Mark undone' : 'Mark done'}
+        </Button>
+        <Button
+          onClick={() => editTodo(id, title + ' edited')}
+          sx={{ flexShrink: 0 }}
+        >
+          Edit
+        </Button>
+        <Button onClick={() => removeTodo(id)} sx={{ flexShrink: 0 }}>
+          Remove
+        </Button>
+      </div>
     </ListItem>
   );
 }
