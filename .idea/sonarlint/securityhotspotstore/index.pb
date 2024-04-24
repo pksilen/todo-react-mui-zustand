@@ -10,8 +10,6 @@ w
 G.idea/sonarlint/issuestore/8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d,b\4\b4a0b63ce8560bbc5de0f9995c20cc861dc2adb3
 
 Q.idea/sonarlint/securityhotspotstore/8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d,1\0\10a03f31c4dce92cb371e761ce9429428bb6c176
-@
-src/App.test.tsx,1\f\1fc1c06a0502bf303f8ba35e530938a98e7e35b2
 D
 public/manifest.json,4\2\42e89cd2213b9d5dfae4f63522702c623170d792
 F
@@ -20,11 +18,13 @@ F
 src/index.tsx,5\a\5ab44fe33ca96299f51ad4778a73e425b92bf439
 ;
 .prettierrc,2\0\20137a9e94744624390b6748bc96df5ca1579b71
-=
-src/index.css,c\5\c5d38a62d1faae90a2acaa34b79a7ef365c917e4
-;
-src/App.tsx,8\3\835da56f32df714aaed6285a5b7fc3a7807851e4
 A
 .stylelintrc.json,b\8\b8af146c14f2398fd612ac906f0be41df9d89b72
 >
 src/index.scss,5\b\5bfd084cc3a318b78f32da1cd49fc9f987fb897f
+U
+%src/todos/services/TodoServiceImpl.ts,0\2\0219526fb841b877690965315d72cbc96f14e483
+Q
+!src/todos/services/TodoService.ts,1\a\1a2721545823f04a987781352719ab74ed99bc7c
+U
+%src/todos/services/FakeTodoService.ts,0\f\0ff5acf49fe5658e22240cd8028d752588a9a326

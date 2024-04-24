@@ -1,6 +1,8 @@
 import { Todo } from '../stores/Todo';
 import { TodoService } from './TodoService';
 
+// Promises returned from below method never reject, but
+// possible error is returned from the methods
 class FakeTodoService implements TodoService {
   createTodo(todo: Todo): Promise<Error | null> {
     if (Math.random() > 0.7) {

@@ -4,6 +4,8 @@ import ApiError from '../../utils/ApiError';
 
 export const BASE_URL = 'http://localhost:8080/todos';
 
+// Promises returned from below method never reject, but
+// possible error is returned from the methods
 class TodoServiceImpl implements TodoService {
   async createTodo(todo: Todo): Promise<Error | null> {
     try {
