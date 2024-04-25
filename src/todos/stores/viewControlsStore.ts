@@ -1,5 +1,5 @@
-import { create } from 'zustand';
 import { createTheme } from '@mui/material/styles';
+import { create } from 'zustand';
 
 const initialTheme = createTheme({
   palette: {

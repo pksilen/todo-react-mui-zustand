@@ -5,6 +5,7 @@ import classNames from './Todos.module.scss';
 import TodosViewFactory from './TodosViewFactory';
 import useViewControlsStore from '../../stores/viewControlsStore';
 import { afterMount } from '../../../utils/utils';
+import TodoViewFactory from './TodoViewFactory';
 
 export default function Todos() {
   const { isLoading, lowerCaseTodoFilterText, shouldShowUndoneOnly, todos } =
@@ -21,7 +22,7 @@ export default function Todos() {
     .filter(
       ({ isDone }) => (shouldShowUndoneOnly && !isDone) || !shouldShowUndoneOnly
     )
-    .map((todo: Todo) => TodosViewFactory.createTodoView(viewType, todo));
+    .map((todo: Todo) => TodoViewFactory.createTodoView(viewType, todo));
 
   return (
     <div className={classNames.container}>

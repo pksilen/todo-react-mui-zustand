@@ -4,6 +4,7 @@ import todoService from '../services/FakeTodoService';
 import { Todo } from './Todo';
 
 interface State {
+  editableTodoId: string | null;
   hasError: boolean;
   isLoading: boolean;
   lowerCaseTodoFilterText: string;
@@ -17,6 +18,7 @@ interface Actions {
   editTodo: (id: string, newTitle: string) => void;
   fetchTodos: () => void;
   removeTodo: (id: string) => void;
+  setEditableTodo: (id: string | null) => void;
   setTodoFilter: (text: string) => void;
   toggleShouldShowUndoneOnly: () => void;
   toggleTodoDone: (id: string) => void;
@@ -25,6 +27,7 @@ interface Actions {
 type TodosStore = State & { actions: Actions };
 
 const useTodosStore = create<TodosStore>()((setState, getState) => ({
+  editableTodoId: null,
   hasError: false,
   isLoading: false,
   lowerCaseTodoFilterText: '',
@@ -60,6 +63,8 @@ const useTodosStore = create<TodosStore>()((setState, getState) => ({
 
     toggleShouldShowUndoneOnly: () =>
       setState({ shouldShowUndoneOnly: !getState().shouldShowUndoneOnly }),
+
+    setEditableTodo: (id: string | null) => setState({ editableTodoId: id }),
 
     setTodoFilter: (text: string) =>
       setState({ lowerCaseTodoFilterText: text.toLowerCase() }),
