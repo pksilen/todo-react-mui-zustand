@@ -1,9 +1,9 @@
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { Checkbox, IconButton, TableCell, TableRow, TextField } from '@mui/material';
-import { Todo } from '../../stores/Todo';
-import useTodosStore from '../../stores/todosStore';
-import useEditTodo from './hooks/useEditTodo';
+import { Todo } from '../../../../stores/Todo';
+import useTodosStore from '../../../../stores/todosStore';
+import useEditTodo from '../hooks/useEditTodo';
 
 type Props = {
   todo: Todo;

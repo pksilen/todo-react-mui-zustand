@@ -1,5 +1,5 @@
 import { KeyboardEvent, useState } from 'react';
-import useTodosStore from '../../../stores/todosStore';
+import useTodosStore from '../../../../stores/todosStore';
 
 export default function useEditTodo(id: string, title: string) {
   const editableTodoId = useTodosStore((store) => store.editableTodoId);

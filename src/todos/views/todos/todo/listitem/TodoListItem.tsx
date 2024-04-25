@@ -1,10 +1,10 @@
 import { TaskAlt } from '@mui/icons-material';
 import { ListItem, ListItemIcon, ListItemText, TextField } from '@mui/material';
-import { Todo } from '../../stores/Todo';
-import EditTodoButton from './buttons/EditTodoButton';
-import RemoveTodoButton from './buttons/RemoveTodoButton';
-import ToggleTodoDoneButton from './buttons/ToggleTodoDoneButton';
-import useEditTodo from './hooks/useEditTodo';
+import { Todo } from '../../../../stores/Todo';
+import EditTodoButton from '../buttons/EditTodoButton';
+import RemoveTodoButton from '../buttons/RemoveTodoButton';
+import ToggleTodoDoneButton from '../buttons/ToggleTodoDoneButton';
+import useEditTodo from '../hooks/useEditTodo';
 import classNames from './TodoListItem.module.scss';
 
 type Props = {

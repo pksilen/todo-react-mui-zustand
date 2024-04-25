@@ -1,6 +1,6 @@
 import DoneIcon from '@mui/icons-material/Done';
 import { Button, IconButton, useMediaQuery } from '@mui/material';
-import useTodosStore from '../../../stores/todosStore';
+import useTodosStore from '../../../../stores/todosStore';
 
 type Props = {
   readonly id: string;

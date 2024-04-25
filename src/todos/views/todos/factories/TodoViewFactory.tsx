@@ -1,7 +1,7 @@
 import { Todo } from '../../../stores/Todo';
 import { ViewType } from '../../../stores/viewControlsStore';
-import TodoListItem from '../TodoListItem';
-import TodoTableRow from '../TodoTableRow';
+import TodoListItem from '../todo/listitem/TodoListItem';
+import TodoTableRow from '../todo/tablerow/TodoTableRow';
 
 export default class TodoViewFactory {
   static createTodoView(viewType: ViewType, todo: Todo) {
