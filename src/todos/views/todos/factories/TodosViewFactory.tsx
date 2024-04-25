@@ -1,6 +1,6 @@
-import { ViewType } from '../../stores/viewControlsStore';
-import { ReactNode } from 'react';
 import { List, Table, TableBody } from '@mui/material';
+import { ReactNode } from 'react';
+import { ViewType } from '../../../stores/viewControlsStore';
 
 export default class TodosViewFactory {
   static createTodosView(viewType: ViewType, children: ReactNode) {

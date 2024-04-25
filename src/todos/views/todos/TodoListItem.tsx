@@ -1,11 +1,10 @@
 import { TaskAlt } from '@mui/icons-material';
 import { ListItem, ListItemIcon, ListItemText, TextField } from '@mui/material';
-import { KeyboardEvent, useState } from 'react';
 import { Todo } from '../../stores/Todo';
-import useTodosStore from '../../stores/todosStore';
 import EditTodoButton from './buttons/EditTodoButton';
 import RemoveTodoButton from './buttons/RemoveTodoButton';
 import ToggleTodoDoneButton from './buttons/ToggleTodoDoneButton';
+import useEditTodo from './hooks/useEditTodo';
 import classNames from './TodoListItem.module.scss';
 
 type Props = {
@@ -13,60 +12,39 @@ type Props = {
 };
 
 export default function TodoListItem({ todo: { id, title, isDone } }: Props) {
-  const editableTodoId = useTodosStore((store) => store.editableTodoId);
-  const { editTodo, setEditableTodo } = useTodosStore((store) => store.actions);
-  const [editedTodoTitle, setEditedTodoTitle] = useState(title);
-
-  function updateTodo() {
-    editTodo(id, editedTodoTitle);
-    setEditableTodo(null);
-  }
-
-  function handleKeyDown(event: KeyboardEvent) {
-    if (event.key === 'Escape') {
-      setEditableTodo(null);
-      setEditedTodoTitle(title);
-    } else if (event.key === 'Enter') {
-      updateTodo();
-    }
-  }
-
-  function handleBlur() {
-    updateTodo();
-  }
-
-  let todoListItemOrEditTodoTitleInput;
-
-  if (editableTodoId === id) {
-    todoListItemOrEditTodoTitleInput = (
-      <TextField
-        InputProps={{ onBlur: handleBlur, onKeyDown: handleKeyDown }}
-        onChange={(event) => setEditedTodoTitle(event.target.value)}
-        sx={{ flexGrow: 1 }}
-        value={editedTodoTitle}
-        variant="standard"
-      />
-    );
-  } else {
-    todoListItemOrEditTodoTitleInput = (
-      <ListItemText
-        onDoubleClick={() => setEditableTodo(id)}
-        primary={title}
-        sx={{
-          flexGrow: 1,
-          overflow: 'hidden',
-          textDecoration: isDone ? 'line-through' : ''
-        }}
-      />
-    );
-  }
+  const {
+    editableTodoId,
+    editedTodoTitle,
+    handleInputBlur,
+    handleInputKeyDown,
+    setEditableTodo,
+    setEditedTodoTitle
+  } = useEditTodo(id, title);
 
   return (
     <ListItem sx={{ display: 'flex' }}>
       <ListItemIcon>
         <TaskAlt color={isDone ? 'success' : 'error'} />
       </ListItemIcon>
-      {todoListItemOrEditTodoTitleInput}
+      {editableTodoId === id ? (
+        <TextField
+          InputProps={{ onBlur: handleInputBlur, onKeyDown: handleInputKeyDown }}
+          onChange={(event) => setEditedTodoTitle(event.target.value)}
+          sx={{ flexGrow: 1 }}
+          value={editedTodoTitle}
+          variant="standard"
+        />
+      ) : (
+        <ListItemText
+          onDoubleClick={() => setEditableTodo(id)}
+          primary={title}
+          sx={{
+            flexGrow: 1,
+            overflow: 'hidden',
+            textDecoration: isDone ? 'line-through' : ''
+          }}
+        />
+      )}
       <div className={classNames.buttons}>
         <ToggleTodoDoneButton id={id} isDone={isDone} />
         <EditTodoButton id={id} />
