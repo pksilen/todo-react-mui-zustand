@@ -17,14 +17,22 @@ export default function TodoListItem({ todo: { id, title, isDone } }: Props) {
   const { editTodo, setEditableTodo } = useTodosStore((store) => store.actions);
   const [editedTodoTitle, setEditedTodoTitle] = useState(title);
 
+  function updateTodo() {
+    editTodo(id, editedTodoTitle);
+    setEditableTodo(null);
+  }
+
   function handleKeyDown(event: KeyboardEvent) {
     if (event.key === 'Escape') {
       setEditableTodo(null);
       setEditedTodoTitle(title);
     } else if (event.key === 'Enter') {
-      editTodo(id, editedTodoTitle);
-      setEditableTodo(null);
+      updateTodo();
     }
+  }
+
+  function handleBlur() {
+    updateTodo();
   }
 
   let todoListItemOrEditTodoTitleInput;
@@ -32,7 +40,7 @@ export default function TodoListItem({ todo: { id, title, isDone } }: Props) {
   if (editableTodoId === id) {
     todoListItemOrEditTodoTitleInput = (
       <TextField
-        InputProps={{ onKeyDown: handleKeyDown }}
+        InputProps={{ onBlur: handleBlur, onKeyDown: handleKeyDown }}
         onChange={(event) => setEditedTodoTitle(event.target.value)}
         sx={{ flexGrow: 1 }}
         value={editedTodoTitle}
@@ -42,6 +50,7 @@ export default function TodoListItem({ todo: { id, title, isDone } }: Props) {
   } else {
     todoListItemOrEditTodoTitleInput = (
       <ListItemText
+        onDoubleClick={() => setEditableTodo(id)}
         primary={title}
         sx={{
           flexGrow: 1,
