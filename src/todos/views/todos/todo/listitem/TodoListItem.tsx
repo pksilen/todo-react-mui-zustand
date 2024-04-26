@@ -4,7 +4,7 @@ import { Todo } from '../../../../stores/Todo';
 import EditTodoButton from '../buttons/EditTodoButton';
 import RemoveTodoButton from '../buttons/RemoveTodoButton';
 import ToggleTodoDoneButton from '../buttons/ToggleTodoDoneButton';
-import useEditTodo from '../hooks/useEditTodo';
+import useTodoEditing from '../hooks/useTodoEditing';
 import classNames from './TodoListItem.module.scss';
 
 type Props = {
@@ -19,7 +19,7 @@ export default function TodoListItem({ todo: { id, title, isDone } }: Props) {
     handleInputKeyDown,
     setEditableTodo,
     setEditedTodoTitle
-  } = useEditTodo(id, title);
+  } = useTodoEditing(id, title);
 
   return (
     <ListItem sx={{ display: 'flex' }}>

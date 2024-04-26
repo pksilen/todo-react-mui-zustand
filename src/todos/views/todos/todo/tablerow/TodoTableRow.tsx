@@ -3,7 +3,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import { Checkbox, IconButton, TableCell, TableRow, TextField } from '@mui/material';
 import { Todo } from '../../../../stores/Todo';
 import useTodosStore from '../../../../stores/todosStore';
-import useEditTodo from '../hooks/useEditTodo';
+import useTodoEditing from '../hooks/useTodoEditing';
 
 type Props = {
   todo: Todo;
@@ -19,7 +19,7 @@ export default function TodoTableRow({ todo: { id, title, isDone } }: Props) {
     handleInputKeyDown,
     setEditableTodo,
     setEditedTodoTitle
-  } = useEditTodo(id, title);
+  } = useTodoEditing(id, title);
 
   return (
     <TableRow>
