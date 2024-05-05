@@ -1,21 +1,21 @@
 import { Button, TextField } from '@mui/material';
-import classNames from './AddTodo.module.scss';
-import useTodosStore from '../../stores/todosStore';
 import { useState } from 'react';
+import { useTodosStore } from '../../stores/todos/todosStore';
+import classes from './AddTodo.module.scss';
 
 export default function AddTodo() {
   const [todoTitle, setTodoTitle] = useState('');
   const { addTodo } = useTodosStore((store) => store.actions);
 
-  function maybeAddTodo() {
+  const maybeAddTodo = () => {
     if (todoTitle) {
       addTodo(todoTitle);
       setTodoTitle('');
     }
-  }
+  };
 
   return (
-    <div className={classNames.container}>
+    <section className={classes.section}>
       <TextField
         id="addtodo"
         fullWidth
@@ -32,6 +32,6 @@ export default function AddTodo() {
       >
         Add todo
       </Button>
-    </div>
+    </section>
   );
 }

@@ -1,37 +1,34 @@
 import { v4 as uuidv4 } from 'uuid';
 import { create } from 'zustand';
-import todoService from '../services/FakeTodoService';
+import { todoService } from '../../services/FakeTodoService';
 import { Todo } from './Todo';
 
 interface State {
-  editableTodoId: string | null;
   hasError: boolean;
-  isLoading: boolean;
+  isPending: boolean;
   lowerCaseTodoFilterText: string;
-  shouldShowUndoneOnly: boolean;
+  shouldShowUndoneTodosOnly: boolean;
   todos: Todo[];
 }
 
 interface Actions {
-  addTodo: (title: string) => void;
+  addTodo: (title: string) => Promise<void>;
   clearError: () => void;
   editTodo: (id: string, newTitle: string) => void;
   fetchTodos: () => void;
   removeTodo: (id: string) => void;
-  setEditableTodo: (id: string | null) => void;
   setTodoFilter: (text: string) => void;
-  toggleShouldShowUndoneOnly: () => void;
+  toggleShouldShowUndoneTodosOnly: () => void;
   toggleTodoDone: (id: string) => void;
 }
 
-type TodosStore = State & { actions: Actions };
+export type TodosStore = State & { actions: Actions };
 
-const useTodosStore = create<TodosStore>()((setState, getState) => ({
-  editableTodoId: null,
+export const useTodosStore = create<TodosStore>()((setState, getState) => ({
   hasError: false,
-  isLoading: false,
+  isPending: false,
   lowerCaseTodoFilterText: '',
-  shouldShowUndoneOnly: false,
+  shouldShowUndoneTodosOnly: false,
   todos: [],
 
   actions: {
@@ -51,9 +48,9 @@ const useTodosStore = create<TodosStore>()((setState, getState) => ({
       }),
 
     fetchTodos: async () => {
-      setState({ isLoading: true });
+      setState({ isPending: true });
       const [todos, error] = await todoService.getTodos();
-      setState({ hasError: !!error, isLoading: false, todos });
+      setState({ hasError: !!error, isPending: false, todos });
     },
 
     removeTodo: (id: string) =>
@@ -61,10 +58,10 @@ const useTodosStore = create<TodosStore>()((setState, getState) => ({
         todos: getState().todos.filter((todo) => todo.id !== id)
       }),
 
-    toggleShouldShowUndoneOnly: () =>
-      setState({ shouldShowUndoneOnly: !getState().shouldShowUndoneOnly }),
-
-    setEditableTodo: (id: string | null) => setState({ editableTodoId: id }),
+    toggleShouldShowUndoneTodosOnly: () =>
+      setState({
+        shouldShowUndoneTodosOnly: !getState().shouldShowUndoneTodosOnly
+      }),
 
     setTodoFilter: (text: string) =>
       setState({ lowerCaseTodoFilterText: text.toLowerCase() }),
@@ -77,9 +74,3 @@ const useTodosStore = create<TodosStore>()((setState, getState) => ({
       })
   }
 }));
-
-export default useTodosStore;
-
-export function getUndoneTodoCount(store: TodosStore) {
-  return store.todos.filter(({ isDone }) => !isDone).length;
-}

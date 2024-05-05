@@ -1,6 +1,6 @@
-import { Todo } from '../stores/Todo';
+import ApiError from '../common/ApiError';
+import { Todo } from '../stores/todos/Todo';
 import { TodoService } from './TodoService';
-import ApiError from '../../utils/ApiError';
 
 export const BASE_URL = 'http://localhost:8080/todos';
 
@@ -34,5 +34,4 @@ class TodoServiceImpl implements TodoService {
   }
 }
 
-const todoService = new TodoServiceImpl();
-export default todoService;
+export const todoService = new TodoServiceImpl();

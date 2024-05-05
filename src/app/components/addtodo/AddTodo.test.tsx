@@ -5,7 +5,7 @@ import AddTodo from './AddTodo';
 
 const mockAddTodo = jest.fn();
 
-jest.mock('../../stores/todosStore', () => () => ({
+jest.mock('../../stores/todos/todosStore', () => () => ({
   addTodo: mockAddTodo
 }));
 

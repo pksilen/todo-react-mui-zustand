@@ -1,18 +1,17 @@
-import React from 'react';
-import Header from '../todos/views/header/Header';
-import classNames from './App.module.scss';
 import { CssBaseline, ThemeProvider } from '@mui/material';
-import Todos from '../todos/views/todos/Todos';
-import AddTodo from '../todos/views/addtodo/AddTodo';
-import ViewControls from '../todos/views/viewcontrols/ViewControls';
-import useViewControlsStore from '../todos/stores/viewControlsStore';
-import ErrorCatcher from '../todos/views/errorcatcher/ErrorCatcher';
+import classes from './App.module.scss';
+import AddTodo from './components/addtodo/AddTodo';
+import ViewControls from './components/controls/ViewControls';
+import ErrorCatcher from './components/error/ErrorCatcher';
+import Header from './components/header/Header';
+import Todos from './components/todos/Todos';
+import { useControlsStore } from './stores/controls/controlsStore';
 
 export default function App() {
-  const theme = useViewControlsStore((store) => store.theme);
+  const theme = useControlsStore((store) => store.theme);
 
   return (
-    <div className={classNames.container}>
+    <main className={classes.main}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Header />
@@ -22,6 +21,6 @@ export default function App() {
           <AddTodo />
         </ErrorCatcher>
       </ThemeProvider>
-    </div>
+    </main>
   );
 }

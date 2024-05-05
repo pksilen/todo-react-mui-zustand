@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function afterMount(func: () => any) {
+export function afterMount(execute: () => any) {
   useEffect(() => {
-    func();
-  }, [func]);
+    execute();
+  }, [execute]);
 }

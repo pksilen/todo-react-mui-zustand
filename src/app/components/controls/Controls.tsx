@@ -1,27 +1,30 @@
 import {
-  FormControlLabel,
-  Switch,
-  ToggleButton,
-  ToggleButtonGroup
-} from '@mui/material';
-import {
   DarkMode,
   FormatListBulleted,
   GridOn,
   LightMode
 } from '@mui/icons-material';
-import classNames from './ViewControls.module.scss';
-import useViewControlsStore, { ViewType } from '../../stores/viewControlsStore';
+import {
+  FormControlLabel,
+  Switch,
+  ToggleButton,
+  ToggleButtonGroup
+} from '@mui/material';
 import { MouseEvent, useState } from 'react';
-import useTodosStore from '../../stores/todosStore';
+import {
+  useControlsStore,
+  ViewType
+} from '../../stores/controls/controlsStore';
+import { useTodosStore } from '../../stores/todos/todosStore';
+import classes from './ViewControls.module.scss';
 
 type ViewMode = 'dark' | 'light';
 
-export default function ViewControls() {
+export const Controls = () => {
   const [viewMode, setViewMode] = useState<ViewMode>('dark');
   const [viewType, setViewType] = useState<ViewType>('list');
 
-  const { toggleShouldShowUndoneOnly } = useTodosStore(
+  const { toggleShouldShowUndoneTodosOnly } = useTodosStore(
     (store) => store.actions
   );
 
@@ -30,7 +33,7 @@ export default function ViewControls() {
     switchToLightMode,
     switchToTodosListView,
     switchToTodosTableView
-  } = useViewControlsStore((store) => store.actions);
+  } = useControlsStore((store) => store.actions);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   function changeViewType(event: MouseEvent<HTMLElement>, viewType: any) {
@@ -43,7 +46,7 @@ export default function ViewControls() {
   }
 
   return (
-    <div className={classNames.container}>
+    <section className={classes.section}>
       <ToggleButtonGroup
         exclusive
         onChange={changeViewType}
@@ -58,7 +61,7 @@ export default function ViewControls() {
         </ToggleButton>
       </ToggleButtonGroup>
       <FormControlLabel
-        control={<Switch onClick={toggleShouldShowUndoneOnly} />}
+        control={<Switch onClick={toggleShouldShowUndoneTodosOnly} />}
         label="Show undone only"
       />
       <ToggleButtonGroup
@@ -74,6 +77,6 @@ export default function ViewControls() {
           <DarkMode />
         </ToggleButton>
       </ToggleButtonGroup>
-    </div>
+    </section>
   );
-}
+};

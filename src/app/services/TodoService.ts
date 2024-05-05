@@ -1,4 +1,4 @@
-import { Todo } from '../stores/Todo';
+import { Todo } from '../stores/todos/Todo';
 
 // Promises returned from below method never reject, but
 // possible error is returned from the methods

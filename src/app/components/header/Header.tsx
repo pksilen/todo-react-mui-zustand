@@ -1,3 +1,4 @@
+import SearchIcon from '@mui/icons-material/Search';
 import {
   Badge,
   BadgeProps,
@@ -6,9 +7,9 @@ import {
   TextField,
   Typography
 } from '@mui/material';
-import SearchIcon from '@mui/icons-material/Search';
-import classNames from './Header.module.scss';
-import useTodosStore, { getUndoneTodoCount } from '../../stores/todosStore';
+import { getUndoneTodoCount } from '../../stores/todos/todoSelectors';
+import { useTodosStore } from '../../stores/todos/todosStore';
+import classes from './Header.module.scss';
 
 const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
   '& .MuiBadge-badge': {
@@ -24,7 +25,7 @@ export default function Header() {
   const { setTodoFilter } = useTodosStore((store) => store.actions);
 
   return (
-    <header className={classNames.header}>
+    <header className={classes.header}>
       <StyledBadge badgeContent={undoneTodoCount} color="error">
         <Typography variant="h2">Todos</Typography>
       </StyledBadge>

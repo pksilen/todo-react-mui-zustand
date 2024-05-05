@@ -32,9 +32,9 @@ interface Actions {
   switchToTodosTableView: () => void;
 }
 
-type ViewControlsStore = State & { actions: Actions };
+type ControlsStore = State & { actions: Actions };
 
-const useViewControlsStore = create<ViewControlsStore>()((setState) => ({
+export const useControlsStore = create<ControlsStore>()((setState) => ({
   theme: initialTheme,
   viewType: 'list',
 
@@ -59,5 +59,3 @@ const useViewControlsStore = create<ViewControlsStore>()((setState) => ({
     switchToTodosTableView: () => setState((store) => ({ viewType: 'table' }))
   }
 }));
-
-export default useViewControlsStore;

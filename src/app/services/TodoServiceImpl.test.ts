@@ -1,6 +1,6 @@
 import { setupServer } from 'msw/node';
 import handlers, { testTodo } from './mocks/handlers';
-import todoService from './TodoServiceImpl';
+import { todoService } from './TodoServiceImpl';
 
 const server = setupServer(...handlers);
 beforeAll(() => server.listen({ onUnhandledRequest: 'bypass' }));

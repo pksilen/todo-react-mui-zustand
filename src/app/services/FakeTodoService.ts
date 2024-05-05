@@ -1,4 +1,4 @@
-import { Todo } from '../stores/Todo';
+import { Todo } from '../stores/todos/Todo';
 import { TodoService } from './TodoService';
 
 // Promises returned from below method never reject, but
@@ -27,5 +27,4 @@ class FakeTodoService implements TodoService {
   }
 }
 
-const todoService = new FakeTodoService();
-export default todoService;
+export const todoService = new FakeTodoService();

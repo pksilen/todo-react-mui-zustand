@@ -1,8 +1,8 @@
-import React, { ReactNode } from 'react';
-import { ErrorBoundary } from 'react-error-boundary';
 import { Button, Typography } from '@mui/material';
-import classNames from './ErrorCatcher.module.scss';
-import useTodosStore from '../../stores/todosStore';
+import { ReactNode } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
+import { useTodosStore } from '../../stores/todos/todosStore';
+import classes from './ErrorCatcher.module.scss';
 
 type Props = {
   children: ReactNode;
@@ -13,7 +13,7 @@ export default function ErrorCatcher({ children }: Props) {
   const { clearError } = useTodosStore((store) => store.actions);
 
   const fallback = (
-    <div className={classNames.fallbackContainer}>
+    <div className={classes.fallback}>
       <Typography variant="h3">Something went wrong.</Typography>
       {hasError && (
         <Button

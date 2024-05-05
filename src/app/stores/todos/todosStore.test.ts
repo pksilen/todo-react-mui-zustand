@@ -1,7 +1,7 @@
-import todoService from '../services/FakeTodoService';
+import todoService from '../../services/FakeTodoService';
 import useTodosStore from './todosStore';
 
-jest.mock('../services/FakeTodoService');
+jest.mock('../../services/FakeTodoService');
 
 describe('todosStore', () => {
   it('should have correct initial state', () => {
@@ -10,9 +10,9 @@ describe('todosStore', () => {
 
     // THEN
     expect(todosStore.hasError).toBe(false);
-    expect(todosStore.isLoading).toBe(false);
+    expect(todosStore.isPending).toBe(false);
     expect(todosStore.lowerCaseTodoFilterText).toEqual('');
-    expect(todosStore.shouldShowUndoneOnly).toBe(false);
+    expect(todosStore.shouldShowUndoneTodosOnly).toBe(false);
     expect(todosStore.todos).toEqual([]);
   });
   describe('clearError', () => {
