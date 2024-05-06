@@ -1,7 +1,7 @@
 import SearchIcon from '@mui/icons-material/Search';
-import { Badge, BadgeProps, InputAdornment, styled, TextField, Typography } from '@mui/material';
-import { getUndoneTodoCount } from '../../stores/todos/todoSelectors';
-import { useTodosStore } from '../../stores/todos/todosStore';
+import { Badge, BadgeProps, InputAdornment, TextField, Typography, styled } from '@mui/material';
+import { getUndoneTodoCount } from 'app/stores/todos/todoSelectors';
+import { useTodosStore } from 'app/stores/todos/todosStore';
 import classes from './Header.module.scss';
 
 const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({

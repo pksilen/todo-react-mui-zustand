@@ -1,6 +1,6 @@
 import EditIcon from '@mui/icons-material/Edit';
 import { Button, IconButton, useMediaQuery } from '@mui/material';
-import { useTodosStore } from '../../../../stores/todos/todosStore';
+import { useTodosStore } from 'app/stores/todos/todosStore';
 
 type Props = {
   readonly id: string;

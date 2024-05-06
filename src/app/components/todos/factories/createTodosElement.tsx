@@ -1,6 +1,6 @@
 import { List, Table, TableBody } from '@mui/material';
 import React from 'react';
-import { ViewType } from '../../../stores/controls/controlsStore';
+import { ViewType } from 'app/stores/controls/controlsStore';
 
 export const createTodosElement = (viewType: ViewType, children: React.ReactNode) => {
   if (viewType === 'list') {

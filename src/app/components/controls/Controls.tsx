@@ -1,8 +1,8 @@
 import { DarkMode, FormatListBulleted, GridOn, LightMode } from '@mui/icons-material';
 import { FormControlLabel, Switch, ToggleButton, ToggleButtonGroup } from '@mui/material';
 import { MouseEvent, useState } from 'react';
-import { useControlsStore, ViewType } from '../../stores/controls/controlsStore';
-import { useTodosStore } from '../../stores/todos/todosStore';
+import { ViewType, useControlsStore } from 'app/stores/controls/controlsStore';
+import { useTodosStore } from 'app/stores/todos/todosStore';
 import classes from './Controls.module.scss';
 
 type ViewMode = 'dark' | 'light';

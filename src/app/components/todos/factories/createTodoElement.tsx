@@ -1,5 +1,5 @@
-import { ViewType } from '../../../stores/controls/controlsStore';
-import { Todo } from '../../../stores/todos/Todo';
+import { ViewType } from 'app/stores/controls/controlsStore';
+import { Todo } from 'app/stores/todos/Todo';
 import { TodoListItem } from '../todo/TodoListItem';
 import { TodoTableRow } from '../todo/TodoTableRow';
 

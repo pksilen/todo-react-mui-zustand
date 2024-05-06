@@ -1,8 +1,8 @@
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { Checkbox, IconButton, TableCell, TableRow } from '@mui/material';
-import { Todo } from '../../../stores/todos/Todo';
-import { useTodosStore } from '../../../stores/todos/todosStore';
+import { Todo } from 'app/stores/todos/Todo';
+import { useTodosStore } from 'app/stores/todos/todosStore';
 
 type Props = {
   readonly todo: Todo;

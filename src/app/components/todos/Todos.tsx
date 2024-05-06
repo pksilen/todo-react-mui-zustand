@@ -1,11 +1,11 @@
 import { Typography } from '@mui/material';
-import { afterMount } from '../../common/components/hooks/afterMount';
-import { useControlsStore } from '../../stores/controls/controlsStore';
-import { Todo } from '../../stores/todos/Todo';
-import { useTodosStore } from '../../stores/todos/todosStore';
+import { afterMount } from 'app/common/components/hooks/afterMount';
+import { useControlsStore } from 'app/stores/controls/controlsStore';
+import { Todo } from 'app/stores/todos/Todo';
+import { useTodosStore } from 'app/stores/todos/todosStore';
+import classes from './Todos.module.scss';
 import { createTodoElement } from './factories/createTodoElement';
 import { createTodosElement } from './factories/createTodosElement';
-import classes from './Todos.module.scss';
 
 export const Todos = () => {
   const { isPending, lowerCaseTodoFilterText, shouldShowUndoneTodosOnly, todos } = useTodosStore(

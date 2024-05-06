@@ -1,5 +1,5 @@
-import ApiError from '../common/ApiError';
-import { Todo } from '../stores/todos/Todo';
+import ApiError from 'app/common/ApiError';
+import { Todo } from 'app/stores/todos/Todo';
 import { TodoService } from './TodoService';
 
 export const BASE_URL = 'http://localhost:8080/todos';
@@ -25,9 +25,7 @@ class TodoServiceImpl implements TodoService {
     try {
       const response = await fetch(BASE_URL);
       const todosOrError = await response.json();
-      return response.ok
-        ? [todosOrError, null]
-        : [[], new ApiError(todosOrError)];
+      return response.ok ? [todosOrError, null] : [[], new ApiError(todosOrError)];
     } catch (error) {
       return [[], new ApiError(error as Error)];
     }

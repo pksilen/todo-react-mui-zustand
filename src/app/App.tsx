@@ -1,11 +1,11 @@
 import { CssBaseline, ThemeProvider } from '@mui/material';
+import { AddTodo } from 'app/components/addtodo/AddTodo';
+import { Controls } from 'app/components/controls/Controls';
+import { ErrorBoundary } from 'app/components/errorboundary/ErrorBoundary';
+import { Header } from 'app/components/header/Header';
+import { Todos } from 'app/components/todos/Todos';
+import { useControlsStore } from 'app/stores/controls/controlsStore';
 import classes from './App.module.scss';
-import { AddTodo } from './components/addtodo/AddTodo';
-import { Controls } from './components/controls/Controls';
-import { ErrorBoundary } from './components/errorboundary/ErrorBoundary';
-import { Header } from './components/header/Header';
-import { Todos } from './components/todos/Todos';
-import { useControlsStore } from './stores/controls/controlsStore';
 
 export default function App() {
   const theme = useControlsStore((store) => store.theme);

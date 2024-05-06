@@ -1,4 +1,4 @@
-import { todoService } from '../../services/FakeTodoService';
+import { todoService } from 'app/services/FakeTodoService';
 import { useTodosStore } from './todosStore';
 
 jest.mock('../../services/FakeTodoService');

@@ -1,4 +1,4 @@
-import { Todo } from '../stores/todos/Todo';
+import { Todo } from 'app/stores/todos/Todo';
 import { TodoService } from './TodoService';
 
 // Promises returned from below method never reject, but

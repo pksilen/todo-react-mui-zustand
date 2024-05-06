@@ -1,6 +1,6 @@
 import { Button, TextField } from '@mui/material';
 import { useState } from 'react';
-import { useTodosStore } from '../../stores/todos/todosStore';
+import { useTodosStore } from 'app/stores/todos/todosStore';
 import classes from './AddTodo.module.scss';
 
 export const AddTodo = () => {

@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 import { create } from 'zustand';
-import { todoService } from '../../services/FakeTodoService';
+import { todoService } from 'app/services/FakeTodoService';
 import { Todo } from './Todo';
 
 interface State {

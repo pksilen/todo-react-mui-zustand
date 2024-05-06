@@ -1,7 +1,7 @@
 import { Button, Typography } from '@mui/material';
 import { ReactNode } from 'react';
 import { ErrorBoundary as ReactErrorBoundary } from 'react-error-boundary';
-import { useTodosStore } from '../../stores/todos/todosStore';
+import { useTodosStore } from 'app/stores/todos/todosStore';
 import classes from './ErrorBoundary.module.scss';
 
 type Props = {
