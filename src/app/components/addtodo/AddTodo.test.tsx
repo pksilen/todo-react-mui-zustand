@@ -1,7 +1,7 @@
 /* eslint-disable testing-library/no-unnecessary-act */
 import { act, render, screen } from '@testing-library/react';
 import user from '@testing-library/user-event';
-import AddTodo from './AddTodo';
+import { AddTodo } from './AddTodo';
 
 const mockAddTodo = jest.fn();
 

@@ -1,45 +1,55 @@
 import { TaskAlt } from '@mui/icons-material';
-import { Button, ListItem, ListItemIcon, ListItemText } from '@mui/material';
+import { ListItem, ListItemIcon, ListItemText, TextField } from '@mui/material';
 import { Todo } from '../../../stores/todos/Todo';
-import { useTodosStore } from '../../../stores/todos/todosStore';
-import classes from './TodoListItem.module.scss';
+import { EditTodoButton } from './buttons/EditTodoButton';
+import { RemoveTodoButton } from './buttons/RemoveTodoButton';
+import { ToggleTodoDoneButton } from './buttons/ToggleTodoDoneButton';
+import useTodoEditing from './hooks/useTodoEditing';
+import classNames from './TodoListItem.module.scss';
 
 type Props = {
-  todo: Todo;
+  readonly todo: Todo;
 };
 
-export default function TodoListItem({ todo: { id, title, isDone } }: Props) {
-  const { toggleTodoDone, editTodo, removeTodo } = useTodosStore(
-    (store) => store.actions
-  );
+export const TodoListItem = ({ todo: { id, title, isDone } }: Props) => {
+  const {
+    editableTodoId,
+    editedTodoTitle,
+    handleInputBlur,
+    handleInputKeyDown,
+    setEditableTodo,
+    setEditedTodoTitle
+  } = useTodoEditing(id, title);
 
   return (
     <ListItem sx={{ display: 'flex' }}>
       <ListItemIcon>
         <TaskAlt color={isDone ? 'success' : 'error'} />
       </ListItemIcon>
-      <ListItemText
-        primary={title}
-        sx={{
-          overflow: 'hidden',
-          textDecoration: isDone ? 'line-through' : '',
-          textOverflow: 'ellipsis'
-        }}
-      />
-      <div className={classes.buttons}>
-        <Button onClick={() => toggleTodoDone(id)} sx={{ flexShrink: 0 }}>
-          {isDone ? 'Mark undone' : 'Mark done'}
-        </Button>
-        <Button
-          onClick={() => editTodo(id, title + ' edited')}
-          sx={{ flexShrink: 0 }}
-        >
-          Edit
-        </Button>
-        <Button onClick={() => removeTodo(id)} sx={{ flexShrink: 0 }}>
-          Remove
-        </Button>
+      {editableTodoId === id ? (
+        <TextField
+          InputProps={{ onBlur: handleInputBlur, onKeyDown: handleInputKeyDown }}
+          onChange={(event) => setEditedTodoTitle(event.target.value)}
+          sx={{ flexGrow: 1 }}
+          value={editedTodoTitle}
+          variant="standard"
+        />
+      ) : (
+        <ListItemText
+          onDoubleClick={() => setEditableTodo(id)}
+          primary={title}
+          sx={{
+            flexGrow: 1,
+            overflow: 'hidden',
+            textDecoration: isDone ? 'line-through' : ''
+          }}
+        />
+      )}
+      <div className={classNames.buttons}>
+        <ToggleTodoDoneButton id={id} isDone={isDone} />
+        <EditTodoButton id={id} />
+        <RemoveTodoButton id={id} />
       </div>
     </ListItem>
   );
-}
+};

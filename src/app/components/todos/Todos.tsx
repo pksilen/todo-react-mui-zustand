@@ -8,12 +8,9 @@ import { createTodosElement } from './factories/createTodosElement';
 import classes from './Todos.module.scss';
 
 export const Todos = () => {
-  const {
-    isPending,
-    lowerCaseTodoFilterText,
-    shouldShowUndoneTodosOnly,
-    todos
-  } = useTodosStore((store) => store);
+  const { isPending, lowerCaseTodoFilterText, shouldShowUndoneTodosOnly, todos } = useTodosStore(
+    (store) => store
+  );
 
   const { fetchTodos } = useTodosStore((store) => store.actions);
   const viewType = useControlsStore((store) => store.viewType);
@@ -21,17 +18,12 @@ export const Todos = () => {
   afterMount(fetchTodos);
 
   const todoElements = todos
-    .filter(({ title }) =>
-      title.toLowerCase().includes(lowerCaseTodoFilterText)
-    )
-    .filter(
-      ({ isDone }) =>
-        (shouldShowUndoneTodosOnly && !isDone) || !shouldShowUndoneTodosOnly
-    )
+    .filter(({ title }) => title.toLowerCase().includes(lowerCaseTodoFilterText))
+    .filter(({ isDone }) => (shouldShowUndoneTodosOnly && !isDone) || !shouldShowUndoneTodosOnly)
     .map((todo: Todo) => createTodoElement(viewType, todo));
 
   return (
-    <section className={classes.section}>
+    <section className={classes.todos}>
       {isPending ? (
         <Typography variant="h4">Loading todos...</Typography>
       ) : (

@@ -1,12 +1,12 @@
 import EditIcon from '@mui/icons-material/Edit';
 import { Button, IconButton, useMediaQuery } from '@mui/material';
-import useTodosStore from '../../../../stores/todosStore';
+import { useTodosStore } from '../../../../stores/todos/todosStore';
 
 type Props = {
   readonly id: string;
 };
 
-export default function EditTodoButton({ id }: Props) {
+export const EditTodoButton = ({ id }: Props) => {
   const { setEditableTodo } = useTodosStore((store) => store.actions);
   const isPortraitPhone = useMediaQuery('(max-width:480px)');
 
@@ -19,4 +19,4 @@ export default function EditTodoButton({ id }: Props) {
       Edit
     </Button>
   );
-}
+};

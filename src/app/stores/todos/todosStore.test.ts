@@ -1,5 +1,5 @@
-import todoService from '../../services/FakeTodoService';
-import useTodosStore from './todosStore';
+import { todoService } from '../../services/FakeTodoService';
+import { useTodosStore } from './todosStore';
 
 jest.mock('../../services/FakeTodoService');
 

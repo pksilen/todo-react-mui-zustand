@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useTodosStore } from '../../stores/todos/todosStore';
 import classes from './AddTodo.module.scss';
 
-export default function AddTodo() {
+export const AddTodo = () => {
   const [todoTitle, setTodoTitle] = useState('');
   const { addTodo } = useTodosStore((store) => store.actions);
 
@@ -15,7 +15,7 @@ export default function AddTodo() {
   };
 
   return (
-    <section className={classes.section}>
+    <section className={classes.addTodo}>
       <TextField
         id="addtodo"
         fullWidth
@@ -34,4 +34,4 @@ export default function AddTodo() {
       </Button>
     </section>
   );
-}
+};

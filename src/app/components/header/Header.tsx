@@ -1,12 +1,5 @@
 import SearchIcon from '@mui/icons-material/Search';
-import {
-  Badge,
-  BadgeProps,
-  InputAdornment,
-  styled,
-  TextField,
-  Typography
-} from '@mui/material';
+import { Badge, BadgeProps, InputAdornment, styled, TextField, Typography } from '@mui/material';
 import { getUndoneTodoCount } from '../../stores/todos/todoSelectors';
 import { useTodosStore } from '../../stores/todos/todosStore';
 import classes from './Header.module.scss';
@@ -20,7 +13,7 @@ const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
   }
 }));
 
-export default function Header() {
+export const Header = () => {
   const undoneTodoCount = useTodosStore((store) => getUndoneTodoCount(store));
   const { setTodoFilter } = useTodosStore((store) => store.actions);
 
@@ -44,4 +37,4 @@ export default function Header() {
       />
     </header>
   );
-}
+};

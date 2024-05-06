@@ -5,26 +5,18 @@ import { Todo } from '../../../stores/todos/Todo';
 import { useTodosStore } from '../../../stores/todos/todosStore';
 
 type Props = {
-  todo: Todo;
+  readonly todo: Todo;
 };
 
-export default function TodoTableRow({ todo: { id, title, isDone } }: Props) {
-  const { toggleTodoDone, editTodo, removeTodo } = useTodosStore(
-    (store) => store.actions
-  );
+export const TodoTableRow = ({ todo: { id, title, isDone } }: Props) => {
+  const { toggleTodoDone, editTodo, removeTodo } = useTodosStore((store) => store.actions);
 
   return (
     <TableRow>
       <TableCell>
-        <Checkbox
-          checked={isDone}
-          color="success"
-          onChange={() => toggleTodoDone(id)}
-        />
+        <Checkbox checked={isDone} color="success" onChange={() => toggleTodoDone(id)} />
       </TableCell>
-      <TableCell
-        sx={{ flexGrow: 1, textDecoration: isDone ? 'line-through' : '' }}
-      >
+      <TableCell sx={{ flexGrow: 1, textDecoration: isDone ? 'line-through' : '' }}>
         {title}
       </TableCell>
       <TableCell align="right">
@@ -37,4 +29,4 @@ export default function TodoTableRow({ todo: { id, title, isDone } }: Props) {
       </TableCell>
     </TableRow>
   );
-}
+};

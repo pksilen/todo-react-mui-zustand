@@ -1,7 +1,7 @@
 import { ViewType } from '../../../stores/controls/controlsStore';
 import { Todo } from '../../../stores/todos/Todo';
-import TodoListItem from '../todo/TodoListItem';
-import TodoTableRow from '../todo/TodoTableRow';
+import { TodoListItem } from '../todo/TodoListItem';
+import { TodoTableRow } from '../todo/TodoTableRow';
 
 export const createTodoElement = (viewType: ViewType, todo: Todo) => {
   if (viewType === 'list') {

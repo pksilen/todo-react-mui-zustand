@@ -1,12 +1,12 @@
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Button, IconButton, useMediaQuery } from '@mui/material';
-import useTodosStore from '../../../../stores/todosStore';
+import { useTodosStore } from '../../../../stores/todos/todosStore';
 
 type Props = {
   readonly id: string;
 };
 
-export default function RemoveTodoButton({ id }: Props) {
+export const RemoveTodoButton = ({ id }: Props) => {
   const { removeTodo } = useTodosStore((store) => store.actions);
   const isPortraitPhone = useMediaQuery('(max-width:480px)');
 
@@ -19,4 +19,4 @@ export default function RemoveTodoButton({ id }: Props) {
       Remove
     </Button>
   );
-}
+};

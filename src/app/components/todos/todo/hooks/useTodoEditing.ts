@@ -1,28 +1,28 @@
 import { KeyboardEvent, useState } from 'react';
-import useTodosStore from '../../../../stores/todosStore';
+import { useTodosStore } from '../../../../stores/todos/todosStore';
 
 export default function useTodoEditing(id: string, title: string) {
   const editableTodoId = useTodosStore((store) => store.editableTodoId);
   const { editTodo, setEditableTodo } = useTodosStore((store) => store.actions);
   const [editedTodoTitle, setEditedTodoTitle] = useState(title);
 
-  function updateTodo() {
+  const updateTodo = () => {
     editTodo(id, editedTodoTitle);
     setEditableTodo(null);
-  }
+  };
 
-  function handleInputKeyDown(event: KeyboardEvent) {
+  const handleInputKeyDown = (event: KeyboardEvent) => {
     if (event.key === 'Escape') {
       setEditableTodo(null);
       setEditedTodoTitle(title);
     } else if (event.key === 'Enter') {
       updateTodo();
     }
-  }
+  };
 
-  function handleInputBlur() {
+  const handleInputBlur = () => {
     updateTodo();
-  }
+  };
 
   return {
     editableTodoId,
