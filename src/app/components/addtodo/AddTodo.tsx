@@ -1,19 +1,10 @@
-import { useState } from 'react';
-import { useTodosStore } from 'app/stores/todos/todosStore';
-import { Button } from '../../common/components/presentational/buttons/Button';
-import { TextInput } from '../../common/components/presentational/inputs/TextInput';
+import { Button } from '../../common/components/buttons/Button';
+import { TextInput } from '../../common/components/inputs/TextInput';
 import classes from './AddTodo.module.scss';
+import { useTodoAdding } from './hooks/useTodoAdding';
 
 export const AddTodo = () => {
-  const [todoTitle, setTodoTitle] = useState('');
-  const { addTodo } = useTodosStore((store) => store.actions);
-
-  const maybeAddTodo = () => {
-    if (todoTitle) {
-      addTodo(todoTitle);
-      setTodoTitle('');
-    }
-  };
+  const { maybeAddTodo, todoTitle, setTodoTitle } = useTodoAdding();
 
   return (
     <section className={classes.addTodo}>
