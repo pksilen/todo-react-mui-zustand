@@ -8,12 +8,7 @@ export type ButtonProps = {
 };
 
 export const Button = ({ children, className, onClick }: ButtonProps) => (
-  <MuiButton
-    color="primary"
-    onClick={onClick}
-    variant="contained"
-    sx={{ flexShrink: 0, marginLeft: '25px' }}
-  >
+  <MuiButton className={className} color="primary" onClick={onClick} variant="contained">
     {children}
   </MuiButton>
 );

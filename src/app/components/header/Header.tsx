@@ -1,17 +1,9 @@
-import SearchIcon from '@mui/icons-material/Search';
-import { Badge, BadgeProps, InputAdornment, TextField, Typography, styled } from '@mui/material';
 import { getUndoneTodoCount } from 'app/stores/todos/todoSelectors';
 import { useTodosStore } from 'app/stores/todos/todosStore';
+import { Badge } from '../../common/components/badges/Badge';
+import { SearchInput } from '../../common/components/inputs/SearchInput';
+import { Heading2 } from '../../common/components/typography/Heading2';
 import classes from './Header.module.scss';
-
-const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
-  '& .MuiBadge-badge': {
-    fontSize: '16px',
-    padding: '2px 4px',
-    right: -3,
-    top: 15
-  }
-}));
 
 export const Header = () => {
   const undoneTodoCount = useTodosStore((store) => getUndoneTodoCount(store));
@@ -19,21 +11,13 @@ export const Header = () => {
 
   return (
     <header className={classes.header}>
-      <StyledBadge badgeContent={undoneTodoCount} color="error">
-        <Typography variant="h2">Todos</Typography>
-      </StyledBadge>
-      <TextField
-        InputProps={{
-          startAdornment: (
-            <InputAdornment position="start">
-              <SearchIcon />
-            </InputAdornment>
-          )
-        }}
+      <Badge content={undoneTodoCount} color="error">
+        <Heading2>Todos</Heading2>
+      </Badge>
+      <SearchInput
+        className={classes.searchInput}
         onChange={(event) => setTodoFilter(event.target.value)}
         placeholder="Search todos..."
-        sx={{ flexGrow: 1, marginLeft: '40px' }}
-        variant="standard"
       />
     </header>
   );

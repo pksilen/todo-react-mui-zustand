@@ -1,31 +1,26 @@
-import { Typography } from '@mui/material';
 import { afterMount } from 'app/common/components/hooks/afterMount';
-import { useControlsStore } from 'app/stores/controls/controlsStore';
 import { Todo } from 'app/stores/todos/Todo';
-import { useTodosStore } from 'app/stores/todos/todosStore';
+import { Heading4 } from '../../common/components/typography/Heading4';
 import classes from './Todos.module.scss';
 import { createTodoElement } from './factories/createTodoElement';
 import { createTodosElement } from './factories/createTodosElement';
+import { useTodos } from './hooks/useTodos';
 
 export const Todos = () => {
-  const { isPending, lowerCaseTodoFilterText, shouldShowUndoneTodosOnly, todos } = useTodosStore(
-    (store) => store
-  );
-
-  const { fetchTodos } = useTodosStore((store) => store.actions);
-  const viewType = useControlsStore((store) => store.viewType);
+  const { fetchTodos, isPending, shouldShowTodoFilter, todos, todoTitleFilter, viewType } =
+    useTodos();
 
   afterMount(fetchTodos);
 
   const todoElements = todos
-    .filter(({ title }) => title.toLowerCase().includes(lowerCaseTodoFilterText))
-    .filter(({ isDone }) => (shouldShowUndoneTodosOnly && !isDone) || !shouldShowUndoneTodosOnly)
+    .filter(todoTitleFilter)
+    .filter(shouldShowTodoFilter)
     .map((todo: Todo) => createTodoElement(viewType, todo));
 
   return (
     <section className={classes.todos}>
       {isPending ? (
-        <Typography variant="h4">Loading todos...</Typography>
+        <Heading4>Loading todos...</Heading4>
       ) : (
         createTodosElement(viewType, todoElements)
       )}

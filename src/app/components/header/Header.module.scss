@@ -2,4 +2,9 @@
   align-items: center;
   display: flex;
   justify-content: space-between;
+
+  .searchInput {
+    flex-grow: 1;
+    margin-inline-start: 40px
+  }
 }

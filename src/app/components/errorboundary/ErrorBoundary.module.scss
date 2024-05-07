@@ -1,4 +1,8 @@
 .fallback {
   margin-block-start: 30px;
-  text-align: center
+  text-align: center;
+
+  .button {
+    margin-block-start: 20px;
+  }
 }
