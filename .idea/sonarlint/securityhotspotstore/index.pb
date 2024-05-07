@@ -196,3 +196,7 @@ N
 src/stores/todos/todosStore.ts,d/a/da16379c6b0ab4f8f58f574525daac6fc3d004bf
 A
 package-lock.json,f/a/fa288d1472d29beccb489a676f68739ad365fc47
+m
+=src/app/common/components/presentational/inputs/TextInput.tsx,2/4/241dbc147f39fda12b61a5fb936fc55547b2ec67
+k
+;src/app/common/components/presentational/buttons/Button.tsx,d/9/d9ec59021dd3abdaf873aa7abab80b07ff653c8e

@@ -1,6 +1,7 @@
-import { Button, TextField } from '@mui/material';
 import { useState } from 'react';
 import { useTodosStore } from 'app/stores/todos/todosStore';
+import { Button } from '../../common/components/presentational/buttons/Button';
+import { TextInput } from '../../common/components/presentational/inputs/TextInput';
 import classes from './AddTodo.module.scss';
 
 export const AddTodo = () => {
@@ -16,20 +17,12 @@ export const AddTodo = () => {
 
   return (
     <section className={classes.addTodo}>
-      <TextField
-        id="addtodo"
-        fullWidth
+      <TextInput
         label="Add new todo..."
         onChange={(event) => setTodoTitle(event.target.value)}
         value={todoTitle}
-        variant="standard"
       />
-      <Button
-        color="primary"
-        onClick={maybeAddTodo}
-        variant="contained"
-        sx={{ flexShrink: 0, marginLeft: '25px' }}
-      >
+      <Button className={classes.button} onClick={maybeAddTodo}>
         Add todo
       </Button>
     </section>
