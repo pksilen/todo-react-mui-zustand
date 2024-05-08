@@ -1,23 +1,20 @@
-import DoneIcon from '@mui/icons-material/Done';
-import { Button, IconButton, useMediaQuery } from '@mui/material';
-import { useTodosStore } from 'app/stores/todos/todosStore';
+import CheckIcon from '@mui/icons-material/Check';
+import { useTodosStore } from '../../../../stores/todos/todosStore';
+import { TodoButton } from './TodoButton';
 
 type Props = {
-  readonly id: string;
-  readonly isDone: boolean;
+  id: string;
+  isDone: boolean;
 };
 
 export const ToggleTodoDoneButton = ({ id, isDone }: Props) => {
   const { toggleTodoDone } = useTodosStore((store) => store.actions);
-  const isPortraitPhone = useMediaQuery('(max-width:480px)');
 
-  return isPortraitPhone ? (
-    <IconButton onClick={() => toggleTodoDone(id)}>
-      <DoneIcon />
-    </IconButton>
-  ) : (
-    <Button onClick={() => toggleTodoDone(id)} sx={{ flexShrink: 0 }}>
-      {isDone ? 'Mark undone' : 'Mark done'}
-    </Button>
+  return (
+    <TodoButton
+      icon={<CheckIcon />}
+      onClick={() => toggleTodoDone(id)}
+      text={isDone ? 'Mark undone' : 'Mark done'}
+    />
   );
 };

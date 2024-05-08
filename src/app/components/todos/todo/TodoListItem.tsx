@@ -1,7 +1,11 @@
 import { TaskAlt } from '@mui/icons-material';
-import { ListItem, ListItemIcon, ListItemText, TextField } from '@mui/material';
+import classNames from 'classnames';
 import { Todo } from 'app/stores/todos/Todo';
-import classNames from './TodoListItem.module.scss';
+import { TextInput } from '../../../common/components/inputs/TextInput';
+import { ListItem } from '../../../common/components/listitems/ListItem';
+import { ListItemIcon } from '../../../common/components/listitems/ListItemIcon';
+import { ListItemText } from '../../../common/components/listitems/ListItemText';
+import classes from './TodoListItem.module.scss';
 import { EditTodoButton } from './buttons/EditTodoButton';
 import { RemoveTodoButton } from './buttons/RemoveTodoButton';
 import { ToggleTodoDoneButton } from './buttons/ToggleTodoDoneButton';
@@ -21,31 +25,30 @@ export const TodoListItem = ({ todo: { id, title, isDone } }: Props) => {
     setEditedTodoTitle
   } = useTodoEditing(id, title);
 
+  const isEditableTodo = editableTodoId === id;
+
+  const titleClasses = classNames(classes.title, {
+    [classes.isDone]: isDone
+  });
+
   return (
-    <ListItem sx={{ display: 'flex' }}>
-      <ListItemIcon>
-        <TaskAlt color={isDone ? 'success' : 'error'} />
-      </ListItemIcon>
-      {editableTodoId === id ? (
-        <TextField
-          InputProps={{ onBlur: handleInputBlur, onKeyDown: handleInputKeyDown }}
+    <ListItem className={classes.todo}>
+      <ListItemIcon icon={<TaskAlt color={isDone ? 'success' : 'error'} />} />
+      {isEditableTodo ? (
+        <TextInput
+          className={classes.titleInput}
+          inputProps={{ onBlur: handleInputBlur, onKeyDown: handleInputKeyDown }}
           onChange={(event) => setEditedTodoTitle(event.target.value)}
-          sx={{ flexGrow: 1 }}
           value={editedTodoTitle}
-          variant="standard"
         />
       ) : (
         <ListItemText
+          className={titleClasses}
           onDoubleClick={() => setEditableTodo(id)}
-          primary={title}
-          sx={{
-            flexGrow: 1,
-            overflow: 'hidden',
-            textDecoration: isDone ? 'line-through' : ''
-          }}
+          text={title}
         />
       )}
-      <div className={classNames.buttons}>
+      <div className={classes.buttons}>
         <ToggleTodoDoneButton id={id} isDone={isDone} />
         <EditTodoButton id={id} />
         <RemoveTodoButton id={id} />

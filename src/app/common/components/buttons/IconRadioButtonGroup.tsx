@@ -2,14 +2,14 @@ import { ToggleButton, ToggleButtonGroup } from '@mui/material';
 import React, { useState } from 'react';
 
 export type IconRadioButtonProps<T extends string> = {
-  icon: React.ReactNode;
-  onClick: () => void;
-  value: T;
+  readonly icon: React.ReactNode;
+  readonly onClick: () => void;
+  readonly value: T;
 };
 
 export type IconRadioButtonGroupProps<T extends string> = {
-  buttons: IconRadioButtonProps<T>[];
-  initialValue: string;
+  readonly buttons: IconRadioButtonProps<T>[];
+  readonly initialValue: string;
 };
 
 export const IconRadioButtonGroup = <T extends string>({

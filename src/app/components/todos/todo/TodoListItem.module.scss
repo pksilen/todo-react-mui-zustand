@@ -1,4 +1,21 @@
-.buttons {
+.todo {
   display: flex;
-  justify-content: end;
+
+  .titleInput {
+    flex-grow: 1;
+  }
+
+  .title {
+    flex-grow: 1;
+    overflow: hidden;
+  }
+
+  .isDone {
+    text-decoration: line-through;
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: end;
+  }
 }

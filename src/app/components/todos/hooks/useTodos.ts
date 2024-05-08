@@ -4,24 +4,27 @@ import { Todo } from '../../../stores/todos/Todo';
 import { useTodosStore } from '../../../stores/todos/todosStore';
 
 export const useTodos = () => {
-  const isPending = useTodosStore((store) => store.isPending);
-  const lowerCaseTodoFilterText = useTodosStore((store) => store.lowerCaseTodoFilterText);
-  const shouldShowUndoneTodosOnly = useTodosStore((store) => store.shouldShowUndoneTodosOnly);
-  const todos = useTodosStore((store) => store.todos);
+  const state = useTodosStore((store) => ({
+    isPending: store.isPending,
+    lowerCaseTodoFilterText: store.lowerCaseTodoFilterText,
+    shouldShowUndoneTodosOnly: store.shouldShowUndoneTodosOnly,
+    todos: store.todos
+  }));
+
   const viewType = useControlsStore((store) => store.viewType);
   const { fetchTodos } = useTodosStore((store) => store.actions);
   afterMount(fetchTodos);
   const isUndone = ({ isDone }: Todo) => !isDone;
 
   const titleContainsTodoFilterText = ({ title }: Todo) =>
-    title.toLowerCase().includes(lowerCaseTodoFilterText);
+    title.toLowerCase().includes(state.lowerCaseTodoFilterText);
 
   return {
-    isPending,
+    isPending: state.isPending,
     isUndone,
-    shouldShowUndoneTodosOnly,
+    shouldShowUndoneTodosOnly: state.shouldShowUndoneTodosOnly,
     titleContainsTodoFilterText,
-    todos,
+    todos: state.todos,
     viewType
   };
 };

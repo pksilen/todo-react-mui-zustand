@@ -11,9 +11,9 @@ const StyledBadge = styled(MuiBadge)<MuiBadgeProps>(({ theme }) => ({
 }));
 
 export type BadgeProps = {
-  children: React.ReactNode;
-  color: 'error';
-  content: React.ReactNode;
+  readonly children: React.ReactNode;
+  readonly color: 'error';
+  readonly content: React.ReactNode;
 };
 
 export const Badge = ({ children, color, content }: BadgeProps) => (

@@ -1,7 +1,7 @@
 import { Typography } from '@mui/material';
 
 export type Heading2Props = {
-  children: React.ReactNode;
+  readonly children: React.ReactNode;
 };
 
 export const Heading2 = ({ children }: Heading2Props) => (
