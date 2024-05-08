@@ -228,3 +228,5 @@ i
 9src/app/components/todos/hooks/useShouldShowTodoFilter.ts,c/f/cf4e54efc207669cf9d62ac77cea27fdec9f4f73
 Z
 *src/app/components/todos/hooks/useTodos.ts,4/3/43040ccd8fbe664e810d12524a7e05d86aa01f77
+M
+src/app/common/utils/isAny.ts,c/0/c0b098e1766dbaa0f54b00721d886401f151a946

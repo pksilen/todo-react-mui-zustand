@@ -1,4 +1,4 @@
-import ApiError from 'app/common/ApiError';
+import ApiError from 'app/common/errors/ApiError';
 import { Todo } from 'app/stores/todos/Todo';
 import { TodoService } from './TodoService';
 
