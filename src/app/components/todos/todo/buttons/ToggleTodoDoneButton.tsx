@@ -3,8 +3,8 @@ import { useTodosStore } from '../../../../stores/todos/todosStore';
 import { TodoButton } from './TodoButton';
 
 type Props = {
-  id: string;
-  isDone: boolean;
+  readonly id: string;
+  readonly isDone: boolean;
 };
 
 export const ToggleTodoDoneButton = ({ id, isDone }: Props) => {

@@ -248,3 +248,13 @@ d
 4src/app/common/components/listitems/ListItemIcon.tsx,3/c/3cdc06c9ea4589e59448d7a09449a8d0193d83e4
 d
 4src/app/common/components/listitems/ListItemText.tsx,c/b/cbfe82c82c9c7f1c3798965f541cf3e9db290a66
+\
+,src/app/common/components/table/TableRow.tsx,0/b/0b16e2a1f111bb2d65722df95c0671bfa70d7850
+]
+-src/app/common/components/table/TableCell.tsx,6/f/6f2a716795a04c0345e63aca04477c1dd8d8a4e7
+f
+6src/app/components/todos/todo/TodoTableRow.module.scss,f/5/f5a46bb02a753d1aa674fd359c4812d51ada0141
+]
+-src/app/common/components/inputs/Checkbox.tsx,d/f/dfdd6d0f678e65cea4b8b2d185836e97d42a2ae4
+`
+0src/app/components/todos/todo/TodoTitleInput.tsx,2/a/2a6140ca473d1635508e33542ee92335b84beafc

@@ -3,7 +3,7 @@ import { useTodosStore } from '../../../../stores/todos/todosStore';
 import { TodoButton } from './TodoButton';
 
 type Props = {
-  id: string;
+  readonly id: string;
 };
 
 export const EditTodoButton = ({ id }: Props) => {

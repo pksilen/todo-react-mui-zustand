@@ -1,8 +1,14 @@
 import { KeyboardEvent, useState } from 'react';
-import { useTodosStore } from 'app/stores/todos/todosStore';
+import { TextInput } from '../../../common/components/inputs/TextInput';
+import { useTodosStore } from '../../../stores/todos/todosStore';
+import classes from './TodoListItem.module.scss';
 
-export default function useTodoEditing(id: string, title: string) {
-  const editableTodoId = useTodosStore((store) => store.editableTodoId);
+type Props = {
+  readonly id: string;
+  readonly title: string;
+};
+
+export const TodoTitleInput = ({ id, title }: Props) => {
   const { editTodo, setEditableTodo } = useTodosStore((store) => store.actions);
   const [editedTodoTitle, setEditedTodoTitle] = useState(title);
 
@@ -24,12 +30,12 @@ export default function useTodoEditing(id: string, title: string) {
     updateTodo();
   };
 
-  return {
-    editableTodoId,
-    editedTodoTitle,
-    handleInputBlur,
-    handleInputKeyDown,
-    setEditableTodo,
-    setEditedTodoTitle
-  };
-}
+  return (
+    <TextInput
+      className={classes.titleInput}
+      inputProps={{ onBlur: handleInputBlur, onKeyDown: handleInputKeyDown }}
+      onChange={(event) => setEditedTodoTitle(event.target.value)}
+      value={editedTodoTitle}
+    />
+  );
+};

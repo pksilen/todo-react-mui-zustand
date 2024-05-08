@@ -1,30 +1,23 @@
 import { TaskAlt } from '@mui/icons-material';
 import classNames from 'classnames';
 import { Todo } from 'app/stores/todos/Todo';
-import { TextInput } from '../../../common/components/inputs/TextInput';
-import { ListItem } from '../../../common/components/listitems/ListItem';
-import { ListItemIcon } from '../../../common/components/listitems/ListItemIcon';
-import { ListItemText } from '../../../common/components/listitems/ListItemText';
+import { ListItem } from '../../../common/components/list/ListItem';
+import { ListItemIcon } from '../../../common/components/list/ListItemIcon';
+import { ListItemText } from '../../../common/components/list/ListItemText';
+import { useTodosStore } from '../../../stores/todos/todosStore';
 import classes from './TodoListItem.module.scss';
+import { TodoTitleInput } from './TodoTitleInput';
 import { EditTodoButton } from './buttons/EditTodoButton';
 import { RemoveTodoButton } from './buttons/RemoveTodoButton';
 import { ToggleTodoDoneButton } from './buttons/ToggleTodoDoneButton';
-import useTodoEditing from './hooks/useTodoEditing';
 
 type Props = {
   readonly todo: Todo;
 };
 
 export const TodoListItem = ({ todo: { id, title, isDone } }: Props) => {
-  const {
-    editableTodoId,
-    editedTodoTitle,
-    handleInputBlur,
-    handleInputKeyDown,
-    setEditableTodo,
-    setEditedTodoTitle
-  } = useTodoEditing(id, title);
-
+  const editableTodoId = useTodosStore((store) => store.editableTodoId);
+  const { setEditableTodo } = useTodosStore((store) => store.actions);
   const isEditableTodo = editableTodoId === id;
 
   const titleClasses = classNames(classes.title, {
@@ -35,12 +28,7 @@ export const TodoListItem = ({ todo: { id, title, isDone } }: Props) => {
     <ListItem className={classes.todo}>
       <ListItemIcon icon={<TaskAlt color={isDone ? 'success' : 'error'} />} />
       {isEditableTodo ? (
-        <TextInput
-          className={classes.titleInput}
-          inputProps={{ onBlur: handleInputBlur, onKeyDown: handleInputKeyDown }}
-          onChange={(event) => setEditedTodoTitle(event.target.value)}
-          value={editedTodoTitle}
-        />
+        <TodoTitleInput id={id} title={title} />
       ) : (
         <ListItemText
           className={titleClasses}
