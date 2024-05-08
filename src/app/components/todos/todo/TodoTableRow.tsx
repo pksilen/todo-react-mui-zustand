@@ -29,7 +29,9 @@ export const TodoTableRow = ({ todo: { id, title, isDone } }: Props) => {
         <Checkbox isChecked={isDone} color="success" onChange={() => toggleTodoDone(id)} />
       </TableCell>
       {isEditableTodo ? (
-        <TodoTitleInput id={id} title={title} />
+        <TableCell>
+          <TodoTitleInput id={id} title={title} />
+        </TableCell>
       ) : (
         <TableCell className={titleClasses} onDoubleClick={() => setEditableTodo(id)}>
           {title}
