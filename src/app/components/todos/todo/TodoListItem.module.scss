@@ -1,10 +1,6 @@
 .todo {
   display: flex;
 
-  .titleInput {
-    flex-grow: 1;
-  }
-
   .title {
     flex-grow: 1;
     overflow: hidden;
@@ -16,6 +12,7 @@
 
   .buttons {
     display: flex;
+    flex-shrink: 0;
     justify-content: end;
   }
 }

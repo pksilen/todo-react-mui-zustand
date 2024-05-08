@@ -6,10 +6,10 @@ import { ListItemIcon } from '../../../common/components/list/ListItemIcon';
 import { ListItemText } from '../../../common/components/list/ListItemText';
 import { useTodosStore } from '../../../stores/todos/todosStore';
 import classes from './TodoListItem.module.scss';
-import { TodoTitleInput } from './TodoTitleInput';
 import { EditTodoButton } from './buttons/EditTodoButton';
 import { RemoveTodoButton } from './buttons/RemoveTodoButton';
 import { ToggleTodoDoneButton } from './buttons/ToggleTodoDoneButton';
+import { TodoTitleInput } from './input/TodoTitleInput';
 
 type Props = {
   readonly todo: Todo;

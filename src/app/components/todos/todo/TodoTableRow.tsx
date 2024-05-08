@@ -8,7 +8,7 @@ import { IconButton } from '../../../common/components/buttons/IconButton';
 import { Checkbox } from '../../../common/components/inputs/Checkbox';
 import { useTodosStore } from '../../../stores/todos/todosStore';
 import classes from './TodoTableRow.module.scss';
-import { TodoTitleInput } from './TodoTitleInput';
+import { TodoTitleInput } from './input/TodoTitleInput';
 
 type Props = {
   readonly todo: Todo;

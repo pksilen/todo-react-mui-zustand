@@ -1,6 +1,7 @@
 import { TextField } from '@mui/material';
 
 export type TextInputProps = {
+  autoFocus?: boolean;
   className?: string;
   inputProps?: object;
   readonly label?: string;
@@ -8,8 +9,16 @@ export type TextInputProps = {
   readonly value: string;
 };
 
-export const TextInput = ({ className, inputProps, label, onChange, value }: TextInputProps) => (
+export const TextInput = ({
+  autoFocus,
+  className,
+  inputProps,
+  label,
+  onChange,
+  value
+}: TextInputProps) => (
   <TextField
+    autoFocus={autoFocus}
     className={className}
     InputProps={inputProps}
     fullWidth

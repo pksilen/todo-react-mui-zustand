@@ -1,7 +1,7 @@
 import { KeyboardEvent, useState } from 'react';
-import { TextInput } from '../../../common/components/inputs/TextInput';
-import { useTodosStore } from '../../../stores/todos/todosStore';
-import classes from './TodoListItem.module.scss';
+import { TextInput } from '../../../../common/components/inputs/TextInput';
+import { useTodosStore } from '../../../../stores/todos/todosStore';
+import classes from './TodoTitleInput.module.scss';
 
 type Props = {
   readonly id: string;
@@ -32,6 +32,7 @@ export const TodoTitleInput = ({ id, title }: Props) => {
 
   return (
     <TextInput
+      autoFocus
       className={classes.titleInput}
       inputProps={{ onBlur: handleInputBlur, onKeyDown: handleInputKeyDown }}
       onChange={(event) => setEditedTodoTitle(event.target.value)}
