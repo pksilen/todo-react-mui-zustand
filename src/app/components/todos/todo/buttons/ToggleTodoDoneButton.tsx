@@ -1,5 +1,5 @@
-import CheckIcon from '@mui/icons-material/Check';
-import { useTodosStore } from '../../../../stores/todos/todosStore';
+import { CheckIcon } from 'app/common/components/icons/Icons';
+import { useTodosStore } from 'app/stores/todos/todosStore';
 import { TodoButton } from './TodoButton';
 
 type Props = {

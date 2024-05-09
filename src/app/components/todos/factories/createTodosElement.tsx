@@ -1,7 +1,7 @@
 import React from 'react';
+import { List } from 'app/common/components/list/List';
+import { Table } from 'app/common/components/table/Table';
 import { ViewType } from 'app/stores/controls/controlsStore';
-import { List } from '../../../common/components/list/List';
-import { Table } from '../../../common/components/table/Table';
 
 export const createTodosElement = (viewType: ViewType, todoElements: React.ReactNode) => {
   if (viewType === 'list') {

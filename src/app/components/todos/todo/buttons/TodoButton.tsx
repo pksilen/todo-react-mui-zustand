@@ -1,7 +1,7 @@
 import { useMediaQuery } from '@mui/material';
 import React from 'react';
-import { Button } from '../../../../common/components/buttons/Button';
-import { IconButton } from '../../../../common/components/buttons/IconButton';
+import { Button } from 'app/common/components/buttons/Button';
+import { IconButton } from 'app/common/components/buttons/IconButton';
 import classes from './TodoButton.module.scss';
 
 type Props = {

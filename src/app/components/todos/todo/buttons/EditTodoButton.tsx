@@ -1,4 +1,4 @@
-import EditIcon from '@mui/icons-material/Edit';
+import { EditIcon } from 'app/common/components/icons/Icons';
 import { useTodosStore } from 'app/stores/todos/todosStore';
 import { TodoButton } from './TodoButton';
 

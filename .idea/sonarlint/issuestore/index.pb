@@ -146,3 +146,5 @@ Y
 )src/app/common/components/table/Table.tsx,c/8/c8d5401939eeb7059cfc24d8adfb26f8ef605a3a
 a
 1src/app/common/components/typography/Heading3.tsx,5/9/5910f2ca8b332a306827310de7857d1b71d6290a
+Y
+)src/app/common/components/icons/Icons.tsx,5/5/553bdc22f6adc55c8f410a579fcf0181c83d4a24

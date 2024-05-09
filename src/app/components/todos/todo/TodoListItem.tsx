@@ -1,5 +1,5 @@
-import { TaskAlt } from '@mui/icons-material';
 import classNames from 'classnames';
+import { TodoIcon } from 'app/common/components/icons/Icons';
 import { ListItem } from 'app/common/components/list/ListItem';
 import { ListItemIcon } from 'app/common/components/list/ListItemIcon';
 import { ListItemText } from 'app/common/components/list/ListItemText';
@@ -26,7 +26,7 @@ export const TodoListItem = ({ todo: { id, title, isDone } }: Props) => {
 
   return (
     <ListItem className={classes.todo}>
-      <ListItemIcon icon={<TaskAlt color={isDone ? 'success' : 'error'} />} />
+      <ListItemIcon icon={<TodoIcon color={isDone ? 'success' : 'error'} />} />
       {isEditableTodo ? (
         <TodoTitleInput id={id} title={title} />
       ) : (

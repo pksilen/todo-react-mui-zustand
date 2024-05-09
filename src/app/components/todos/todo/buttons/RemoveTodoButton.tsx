@@ -1,4 +1,4 @@
-import RemoveIcon from '@mui/icons-material/Remove';
+import { RemoveIcon } from 'app/common/components/icons/Icons';
 import { useTodosStore } from 'app/stores/todos/todosStore';
 import { TodoButton } from './TodoButton';
 
