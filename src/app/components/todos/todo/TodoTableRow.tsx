@@ -1,5 +1,3 @@
-import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
 import classNames from 'classnames';
 import { IconButton } from 'app/common/components/buttons/IconButton';
 import { Checkbox } from 'app/common/components/inputs/Checkbox';
@@ -7,6 +5,7 @@ import { TableCell } from 'app/common/components/table/TableCell';
 import { TableRow } from 'app/common/components/table/TableRow';
 import { Todo } from 'app/stores/todos/Todo';
 import { useTodosStore } from 'app/stores/todos/todosStore';
+import { EditIcon, RemoveIcon } from '../../../common/components/icons/Icons';
 import classes from './TodoTableRow.module.scss';
 import { TodoTitleInput } from './input/TodoTitleInput';
 
@@ -39,7 +38,7 @@ export const TodoTableRow = ({ todo: { id, title, isDone } }: Props) => {
       )}
       <TableCell className={classes.buttons}>
         <IconButton icon={<EditIcon />} onClick={() => setEditableTodo(id)} />
-        <IconButton icon={<DeleteIcon />} onClick={() => removeTodo(id)} />
+        <IconButton icon={<RemoveIcon />} onClick={() => removeTodo(id)} />
       </TableCell>
     </TableRow>
   );
