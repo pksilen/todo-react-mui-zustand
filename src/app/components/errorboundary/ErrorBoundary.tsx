@@ -1,8 +1,8 @@
-import { Typography } from '@mui/material';
 import React from 'react';
 import { ErrorBoundary as ReactErrorBoundary } from 'react-error-boundary';
 import { useTodosStore } from 'app/stores/todos/todosStore';
 import { Button } from '../../common/components/buttons/Button';
+import { Heading3 } from '../../common/components/typography/Heading3';
 import classes from './ErrorBoundary.module.scss';
 
 type Props = {
@@ -15,7 +15,7 @@ export const ErrorBoundary = ({ children }: Props) => {
 
   const errorSection = (
     <section className={classes.error}>
-      <Typography variant="h3">Something went wrong.</Typography>
+      <Heading3>Something went wrong.</Heading3>
       {hasError && (
         <Button className={classes.button} onClick={clearError}>
           Ok
