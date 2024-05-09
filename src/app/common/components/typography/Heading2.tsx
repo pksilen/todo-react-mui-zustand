@@ -1,9 +1,8 @@
 import { Typography } from '@mui/material';
+import React from 'react';
 
-export type Heading2Props = {
+type Props = {
   readonly children: React.ReactNode;
 };
 
-export const Heading2 = ({ children }: Heading2Props) => (
-  <Typography variant="h2">{children}</Typography>
-);
+export const Heading2 = ({ children }: Props) => <Typography variant="h2">{children}</Typography>;

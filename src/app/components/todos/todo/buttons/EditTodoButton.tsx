@@ -1,5 +1,5 @@
 import EditIcon from '@mui/icons-material/Edit';
-import { useTodosStore } from '../../../../stores/todos/todosStore';
+import { useTodosStore } from 'app/stores/todos/todosStore';
 import { TodoButton } from './TodoButton';
 
 type Props = {

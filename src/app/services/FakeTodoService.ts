@@ -4,7 +4,7 @@ import { TodoService } from './TodoService';
 // Promises returned from below method never reject, but
 // possible error is returned from the methods
 class FakeTodoService implements TodoService {
-  createTodo(todo: Todo): Promise<Error | null> {
+  createTodo(_: Todo): Promise<Error | null> {
     if (Math.random() > 0.7) {
       return Promise.resolve(new Error());
     } else {
@@ -13,7 +13,7 @@ class FakeTodoService implements TodoService {
   }
 
   getTodos(): Promise<[Todo[], Error | null]> {
-    return new Promise((resolve, reject) =>
+    return new Promise((resolve) =>
       setTimeout(() => {
         const randomValue = Math.random();
 

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useTodosStore } from '../../../stores/todos/todosStore';
+import { useTodosStore } from 'app/stores/todos/todosStore';
 
 export const useTodoAdding = () => {
   const [todoTitle, setTodoTitle] = useState('');
@@ -12,5 +12,5 @@ export const useTodoAdding = () => {
     }
   };
 
-  return { maybeAddTodo, todoTitle, setTodoTitle };
+  return { maybeAddTodo, setTodoTitle, todoTitle };
 };

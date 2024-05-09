@@ -1,7 +1,8 @@
 import { TableRow as MuiTableRow } from '@mui/material';
+import React from 'react';
 
-export type TableRowProps = {
-  children?: React.ReactNode;
+type Props = {
+  readonly children?: React.ReactNode;
 };
 
-export const TableRow = ({ children }: TableRowProps) => <MuiTableRow>{children}</MuiTableRow>;
+export const TableRow = ({ children }: Props) => <MuiTableRow>{children}</MuiTableRow>;

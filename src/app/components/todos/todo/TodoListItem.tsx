@@ -1,10 +1,10 @@
 import { TaskAlt } from '@mui/icons-material';
 import classNames from 'classnames';
+import { ListItem } from 'app/common/components/list/ListItem';
+import { ListItemIcon } from 'app/common/components/list/ListItemIcon';
+import { ListItemText } from 'app/common/components/list/ListItemText';
 import { Todo } from 'app/stores/todos/Todo';
-import { ListItem } from '../../../common/components/list/ListItem';
-import { ListItemIcon } from '../../../common/components/list/ListItemIcon';
-import { ListItemText } from '../../../common/components/list/ListItemText';
-import { useTodosStore } from '../../../stores/todos/todosStore';
+import { useTodosStore } from 'app/stores/todos/todosStore';
 import classes from './TodoListItem.module.scss';
 import { EditTodoButton } from './buttons/EditTodoButton';
 import { RemoveTodoButton } from './buttons/RemoveTodoButton';

@@ -1,9 +1,8 @@
 import { ListItemIcon as MuiListItemIcon } from '@mui/material';
+import React from 'react';
 
-export type ListItemIconProps = {
-  icon: React.ReactNode;
+type Props = {
+  readonly icon: React.ReactNode;
 };
 
-export const ListItemIcon = ({ icon }: ListItemIconProps) => (
-  <MuiListItemIcon>{icon}</MuiListItemIcon>
-);
+export const ListItemIcon = ({ icon }: Props) => <MuiListItemIcon>{icon}</MuiListItemIcon>;

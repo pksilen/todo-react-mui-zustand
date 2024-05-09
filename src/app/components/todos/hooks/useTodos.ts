@@ -1,7 +1,7 @@
-import { afterMount } from '../../../common/components/hooks/afterMount';
-import { useControlsStore } from '../../../stores/controls/controlsStore';
-import { Todo } from '../../../stores/todos/Todo';
-import { useTodosStore } from '../../../stores/todos/todosStore';
+import { afterMount } from 'app/common/hooks/afterMount';
+import { useControlsStore } from 'app/stores/controls/controlsStore';
+import { Todo } from 'app/stores/todos/Todo';
+import { useTodosStore } from 'app/stores/todos/todosStore';
 
 export const useTodos = () => {
   const state = useTodosStore((store) => ({
@@ -11,20 +11,18 @@ export const useTodos = () => {
     todos: store.todos
   }));
 
-  const viewType = useControlsStore((store) => store.viewType);
   const { fetchTodos } = useTodosStore((store) => store.actions);
   afterMount(fetchTodos);
-  const isUndone = ({ isDone }: Todo) => !isDone;
 
   const titleContainsTodoFilterText = ({ title }: Todo) =>
     title.toLowerCase().includes(state.lowerCaseTodoFilterText);
 
   return {
     isPending: state.isPending,
-    isUndone,
+    isUndone: ({ isDone }: Todo) => !isDone,
     shouldShowUndoneTodosOnly: state.shouldShowUndoneTodosOnly,
     titleContainsTodoFilterText,
     todos: state.todos,
-    viewType
+    viewType: useControlsStore((store) => store.viewType)
   };
 };

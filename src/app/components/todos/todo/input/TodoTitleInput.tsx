@@ -1,6 +1,6 @@
 import { KeyboardEvent, useState } from 'react';
-import { TextInput } from '../../../../common/components/inputs/TextInput';
-import { useTodosStore } from '../../../../stores/todos/todosStore';
+import { TextInput } from 'app/common/components/inputs/TextInput';
+import { useTodosStore } from 'app/stores/todos/todosStore';
 import classes from './TodoTitleInput.module.scss';
 
 type Props = {

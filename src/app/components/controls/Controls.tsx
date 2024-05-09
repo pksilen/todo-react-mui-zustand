@@ -1,11 +1,11 @@
 import { DarkMode, FormatListBulleted, GridOn, LightMode } from '@mui/icons-material';
-import { ViewType, useControlsStore } from 'app/stores/controls/controlsStore';
-import { useTodosStore } from 'app/stores/todos/todosStore';
 import {
   IconRadioButtonGroup,
   IconRadioButtonProps
-} from '../../common/components/buttons/IconRadioButtonGroup';
-import { Switch } from '../../common/components/switches/Switch';
+} from 'app/common/components/buttons/IconRadioButtonGroup';
+import { Switch } from 'app/common/components/switches/Switch';
+import { ViewType, useControlsStore } from 'app/stores/controls/controlsStore';
+import { useTodosStore } from 'app/stores/todos/todosStore';
 import classes from './Controls.module.scss';
 
 type ViewMode = 'dark' | 'light';
@@ -13,17 +13,18 @@ type ViewMode = 'dark' | 'light';
 export const Controls = () => {
   const { toggleShouldShowUndoneTodosOnly } = useTodosStore((store) => store.actions);
 
-  const { switchToDarkMode, switchToLightMode, switchToTodosListView, switchToTodosTableView } =
-    useControlsStore((store) => store.actions);
+  const { activateDarkMode, activateLightMode, showTodosList, showTodosTable } = useControlsStore(
+    (store) => store.actions
+  );
 
   const viewTypeButtons: IconRadioButtonProps<ViewType>[] = [
-    { icon: <FormatListBulleted />, onClick: switchToTodosListView, value: 'list' },
-    { icon: <GridOn />, onClick: switchToTodosTableView, value: 'table' }
+    { icon: <FormatListBulleted />, onClick: showTodosList, value: 'list' },
+    { icon: <GridOn />, onClick: showTodosTable, value: 'table' }
   ];
 
   const viewModeButtons: IconRadioButtonProps<ViewMode>[] = [
-    { icon: <LightMode />, onClick: switchToLightMode, value: 'light' },
-    { icon: <DarkMode />, onClick: switchToDarkMode, value: 'dark' }
+    { icon: <LightMode />, onClick: activateLightMode, value: 'light' },
+    { icon: <DarkMode />, onClick: activateDarkMode, value: 'dark' }
   ];
 
   return (

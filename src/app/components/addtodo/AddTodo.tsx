@@ -1,10 +1,10 @@
-import { Button } from '../../common/components/buttons/Button';
-import { TextInput } from '../../common/components/inputs/TextInput';
+import { Button } from 'app/common/components/buttons/Button';
+import { TextInput } from 'app/common/components/inputs/TextInput';
 import classes from './AddTodo.module.scss';
 import { useTodoAdding } from './hooks/useTodoAdding';
 
 export const AddTodo = () => {
-  const { maybeAddTodo, todoTitle, setTodoTitle } = useTodoAdding();
+  const { maybeAddTodo, setTodoTitle, todoTitle } = useTodoAdding();
 
   return (
     <section className={classes.addTodo}>

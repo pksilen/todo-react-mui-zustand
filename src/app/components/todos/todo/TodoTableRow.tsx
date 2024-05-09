@@ -1,12 +1,12 @@
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import classNames from 'classnames';
+import { IconButton } from 'app/common/components/buttons/IconButton';
+import { Checkbox } from 'app/common/components/inputs/Checkbox';
 import { TableCell } from 'app/common/components/table/TableCell';
 import { TableRow } from 'app/common/components/table/TableRow';
 import { Todo } from 'app/stores/todos/Todo';
-import { IconButton } from '../../../common/components/buttons/IconButton';
-import { Checkbox } from '../../../common/components/inputs/Checkbox';
-import { useTodosStore } from '../../../stores/todos/todosStore';
+import { useTodosStore } from 'app/stores/todos/todosStore';
 import classes from './TodoTableRow.module.scss';
 import { TodoTitleInput } from './input/TodoTitleInput';
 

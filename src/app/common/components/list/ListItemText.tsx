@@ -1,11 +1,11 @@
 import { ListItemText as MuiListItemText } from '@mui/material';
 
-export type ListItemTextProps = {
-  className?: string;
-  onDoubleClick?: () => void;
-  text: string;
+type Props = {
+  readonly className?: string;
+  readonly onDoubleClick?: () => void;
+  readonly text: string;
 };
 
-export const ListItemText = ({ className, onDoubleClick, text }: ListItemTextProps) => (
+export const ListItemText = ({ className, onDoubleClick, text }: Props) => (
   <MuiListItemText className={className} onDoubleClick={onDoubleClick} primary={text} />
 );

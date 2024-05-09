@@ -1,6 +1,6 @@
+import { Heading4 } from 'app/common/components/typography/Heading4';
+import { isAny } from 'app/common/utils/isAny';
 import { Todo } from 'app/stores/todos/Todo';
-import { Heading4 } from '../../common/components/typography/Heading4';
-import { isAny } from '../../common/utils/isAny';
 import classes from './Todos.module.scss';
 import { createTodoElement } from './factories/createTodoElement';
 import { createTodosElement } from './factories/createTodosElement';

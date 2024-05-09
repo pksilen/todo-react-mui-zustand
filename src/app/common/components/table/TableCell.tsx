@@ -1,12 +1,13 @@
 import { TableCell as MuiTableCell } from '@mui/material';
+import React from 'react';
 
-export type TableCellProps = {
-  children?: React.ReactNode;
-  className?: string;
-  onDoubleClick?: () => void;
+type Props = {
+  readonly children?: React.ReactNode;
+  readonly className?: string;
+  readonly onDoubleClick?: () => void;
 };
 
-export const TableCell = ({ children, className, onDoubleClick }: TableCellProps) => (
+export const TableCell = ({ children, className, onDoubleClick }: Props) => (
   <MuiTableCell className={className} onDoubleClick={onDoubleClick}>
     {children}
   </MuiTableCell>

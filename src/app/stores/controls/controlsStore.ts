@@ -26,10 +26,10 @@ interface State {
 }
 
 interface Actions {
-  switchToDarkMode: () => void;
-  switchToLightMode: () => void;
-  switchToTodosListView: () => void;
-  switchToTodosTableView: () => void;
+  activateDarkMode: () => void;
+  activateLightMode: () => void;
+  showTodosList: () => void;
+  showTodosTable: () => void;
 }
 
 type ControlsStore = State & { actions: Actions };
@@ -39,7 +39,7 @@ export const useControlsStore = create<ControlsStore>()((setState) => ({
   viewType: 'list',
 
   actions: {
-    switchToDarkMode: () =>
+    activateDarkMode: () =>
       setState((store) => ({
         theme: createTheme({
           palette: { mode: 'dark' },
@@ -47,7 +47,7 @@ export const useControlsStore = create<ControlsStore>()((setState) => ({
         })
       })),
 
-    switchToLightMode: () =>
+    activateLightMode: () =>
       setState((store) => ({
         theme: createTheme({
           palette: { mode: 'light' },
@@ -55,7 +55,7 @@ export const useControlsStore = create<ControlsStore>()((setState) => ({
         })
       })),
 
-    switchToTodosListView: () => setState((store) => ({ viewType: 'list' })),
-    switchToTodosTableView: () => setState((store) => ({ viewType: 'table' }))
+    showTodosList: () => setState((store) => ({ viewType: 'list' })),
+    showTodosTable: () => setState((store) => ({ viewType: 'table' }))
   }
 }));

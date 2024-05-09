@@ -1,8 +1,8 @@
+import { Badge } from 'app/common/components/badges/Badge';
+import { SearchInput } from 'app/common/components/inputs/SearchInput';
+import { Heading2 } from 'app/common/components/typography/Heading2';
 import { getUndoneTodoCount } from 'app/stores/todos/todoSelectors';
 import { useTodosStore } from 'app/stores/todos/todosStore';
-import { Badge } from '../../common/components/badges/Badge';
-import { SearchInput } from '../../common/components/inputs/SearchInput';
-import { Heading2 } from '../../common/components/typography/Heading2';
 import classes from './Header.module.scss';
 
 export const Header = () => {
@@ -10,12 +10,12 @@ export const Header = () => {
   const { setTodoFilter } = useTodosStore((store) => store.actions);
 
   return (
-    <header className={classes.header}>
+    <header className={classes.todosHeader}>
       <Badge content={undoneTodoCount} color="error">
         <Heading2>Todos</Heading2>
       </Badge>
       <SearchInput
-        className={classes.searchInput}
+        className={classes.todoSearch}
         onChange={(event) => setTodoFilter(event.target.value)}
         placeholder="Search todos..."
       />

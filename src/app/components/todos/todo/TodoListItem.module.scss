@@ -4,10 +4,10 @@
   .title {
     flex-grow: 1;
     overflow: hidden;
-  }
 
-  .isDone {
-    text-decoration: line-through;
+    &.isDone {
+      text-decoration: line-through;
+    }
   }
 
   .buttons {

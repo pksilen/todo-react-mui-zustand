@@ -1,5 +1,5 @@
 import RemoveIcon from '@mui/icons-material/Remove';
-import { useTodosStore } from '../../../../stores/todos/todosStore';
+import { useTodosStore } from 'app/stores/todos/todosStore';
 import { TodoButton } from './TodoButton';
 
 type Props = {
