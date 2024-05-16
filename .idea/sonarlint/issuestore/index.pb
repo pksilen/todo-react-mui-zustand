@@ -68,3 +68,25 @@ S
 #src/app/services/TodoServiceImpl.ts,2\f\2ff822ef48123f739eff50a3c3df45992892d31e
 O
 src/app/services/TodoService.ts,f\f\ff33b9fb87fd8828dac8e8e2549f5062fda00a20
+P
+ integrationtests/heading.spec.ts,9\3\9384cd97567dbd170937ed07f20139ed38f30f51
+T
+$integrationtests/windowTitle.spec.ts,5\d\5db6742d8f09c04b2f7da21790d5ca34d0c7c7a5
+A
+public/index.html,f\4\f43ecdf8d666ee908aacce037b4cd72159e4741b
+b
+2integrationtests/viewchange/changeViewMode.spec.ts,2\1\21be474b39748c3e7ab3a7fc43a25967cd6fbf6a
+b
+2integrationtests/viewchange/changeViewType.spec.ts,5\d\5db12562aadb096aedaba618998fea279affd069
+U
+%integrationtests/todo/addTodo.spec.ts,2\b\2b25b9c499d31054018f2d6c077e758ed5f08983
+V
+&integrationtests/todo/editTodo.spec.ts,2\c\2c863924a35bc3df59771af41b591b8b2ee23b72
+Y
+)integrationtests/todo/filterTodos.spec.ts,a\1\a1808bdd799b37c7928d0e7bc93a8594e0e8b64f
+X
+(integrationtests/todo/removeTodo.spec.ts,b\a\ba562e314f70e91df48b1021c8e7d1139053ba6e
+a
+1integrationtests/todo/showUndoneTodosOnly.spec.ts,a\1\a11d95cd6fbfd516fe2c1ecff510e4131d332a53
+\
+,integrationtests/todo/toggleTodoDone.spec.ts,6\1\616b0ab33a6dd0f77746515f0e8b4036162dd272
