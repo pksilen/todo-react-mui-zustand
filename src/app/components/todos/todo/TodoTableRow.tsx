@@ -5,7 +5,7 @@ import { Checkbox } from 'app/common/components/inputs/Checkbox';
 import { EditTextInput } from 'app/common/components/inputs/EditTextInput';
 import { TableCell } from 'app/common/components/table/TableCell';
 import { TableRow } from 'app/common/components/table/TableRow';
-import { Todo } from '../../../stores/todos/Todo';
+import { Todo } from 'app/stores/todos/Todo';
 import classes from './TodoTableRow.module.scss';
 import { useTodo } from './hooks/useTodo';
 

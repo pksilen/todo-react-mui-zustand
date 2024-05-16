@@ -1,9 +1,8 @@
 import React from 'react';
 import { Button } from 'app/common/components/buttons/Button';
 import { IconButton } from 'app/common/components/buttons/IconButton';
-import { useMediaQuery } from '../../hooks/useMediaQuery';
+import { useMediaQuery } from 'app/common/hooks/useMediaQuery';
 import classes from './IconOrButton.module.scss';
-
 
 type Props = {
   readonly icon: React.ReactNode;

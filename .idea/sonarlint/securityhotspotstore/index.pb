@@ -90,3 +90,7 @@ a
 1integrationtests/todo/showUndoneTodosOnly.spec.ts,a\1\a11d95cd6fbfd516fe2c1ecff510e4131d332a53
 \
 ,integrationtests/todo/toggleTodoDone.spec.ts,6\1\616b0ab33a6dd0f77746515f0e8b4036162dd272
+Y
+)src/app/common/components/icons/Icons.tsx,5\5\553bdc22f6adc55c8f410a579fcf0181c83d4a24
+b
+2src/app/common/components/buttons/IconOrButton.tsx,7\b\7b680c11d1249d1cfefb9e06f0dcdffd00698091
