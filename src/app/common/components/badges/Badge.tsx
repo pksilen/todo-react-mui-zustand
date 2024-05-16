@@ -17,7 +17,11 @@ type Props = {
 };
 
 export const Badge = ({ children, color, content }: Props) => (
-  <StyledBadge badgeContent={content} color={color}>
+  <StyledBadge
+    badgeContent={<span title="Undone todo count">{content}</span>}
+    color={color}
+    role="status"
+  >
     {children}
   </StyledBadge>
 );

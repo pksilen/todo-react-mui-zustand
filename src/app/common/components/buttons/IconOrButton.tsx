@@ -1,8 +1,9 @@
 import React from 'react';
 import { Button } from 'app/common/components/buttons/Button';
 import { IconButton } from 'app/common/components/buttons/IconButton';
-import { useMediaQuery } from '../../../../common/hooks/useMediaQuery';
-import classes from './TodoButton.module.scss';
+import { useMediaQuery } from '../../hooks/useMediaQuery';
+import classes from './IconOrButton.module.scss';
+
 
 type Props = {
   readonly icon: React.ReactNode;
@@ -10,7 +11,7 @@ type Props = {
   readonly text: string;
 };
 
-export const TodoButton = ({ icon, onClick, text }: Props) => {
+export const IconOrButton = ({ icon, onClick, text }: Props) => {
   const isPortraitPhone = useMediaQuery('(max-width:480px)');
 
   return isPortraitPhone ? (

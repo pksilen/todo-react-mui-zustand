@@ -25,7 +25,7 @@ export const IconRadioButtonGroup = <T extends string>({
 
   const iconRadioButtonElements = buttons.map(
     ({ icon, onClick, value }: IconRadioButtonProps<T>) => (
-      <ToggleButton key={value} onClick={onClick} value={value as string}>
+      <ToggleButton aria-label={value} key={value} onClick={onClick} value={value as string}>
         {icon}
       </ToggleButton>
     )

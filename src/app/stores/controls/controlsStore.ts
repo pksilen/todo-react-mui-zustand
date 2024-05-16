@@ -1,5 +1,7 @@
+import { PaletteMode } from '@mui/material';
 import { createTheme } from '@mui/material/styles';
 import { create } from 'zustand';
+
 
 const initialTheme = createTheme({
   palette: {
@@ -19,6 +21,7 @@ const initialTheme = createTheme({
 });
 
 export type ViewType = 'list' | 'table';
+export type ViewMode = PaletteMode;
 
 interface State {
   theme: typeof initialTheme;

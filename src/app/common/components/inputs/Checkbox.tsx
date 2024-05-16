@@ -6,6 +6,6 @@ type Props = {
   readonly onChange: () => void;
 };
 
-export const Checkbox = ({ color, isChecked, onChange }: Props) => (
-  <MuiCheckbox checked={isChecked} color={color} onChange={onChange} />
+export const Checkbox = ({ color, isChecked, onChange, ...restOfProps }: Props) => (
+  <MuiCheckbox checked={isChecked} color={color} inputProps={restOfProps} onChange={onChange} />
 );
