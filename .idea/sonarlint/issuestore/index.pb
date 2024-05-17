@@ -94,3 +94,9 @@ Y
 )src/app/common/components/icons/Icons.tsx,5\5\553bdc22f6adc55c8f410a579fcf0181c83d4a24
 b
 2src/app/common/components/buttons/IconOrButton.tsx,7\b\7b680c11d1249d1cfefb9e06f0dcdffd00698091
+Z
+*src/app/common/components/badges/Badge.tsx,d\0\d0aa3bb6b478aedad8e14a890ca57ec00b400b8e
+]
+-src/app/common/components/inputs/Checkbox.tsx,d\f\dfdd6d0f678e65cea4b8b2d185836e97d42a2ae4
+O
+integrationtests/TodoAppPage.ts,7\f\7f49360823fa1f58b0b8eb48a454d19f4d58611d
