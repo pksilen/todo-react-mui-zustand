@@ -100,3 +100,7 @@ Z
 -src/app/common/components/inputs/Checkbox.tsx,d\f\dfdd6d0f678e65cea4b8b2d185836e97d42a2ae4
 O
 integrationtests/TodoAppPage.ts,7\f\7f49360823fa1f58b0b8eb48a454d19f4d58611d
+M
+src/app/common/utils/isAny.ts,c\0\c0b098e1766dbaa0f54b00721d886401f151a946
+^
+.src/app/components/addtodo/AddTodo.module.scss,9\3\937d3cf257c55a7fc5e94b4bcfeb1a9906e9b756

@@ -7,7 +7,7 @@ import { TableCell } from 'app/common/components/table/TableCell';
 import { TableRow } from 'app/common/components/table/TableRow';
 import { Todo } from 'app/stores/todos/Todo';
 import classes from './TodoTableRow.module.scss';
-import { useTodo } from './hooks/useTodo';
+import { useTodo } from './useTodo';
 
 type Props = {
   readonly todo: Todo;

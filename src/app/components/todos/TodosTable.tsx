@@ -4,8 +4,8 @@ import { Table } from 'app/common/components/table/Table';
 import { Heading4 } from 'app/common/components/typography/Heading4';
 import { Todo } from 'app/stores/todos/Todo';
 import classes from './Todos.module.scss';
-import { useTodos } from './hooks/useTodos';
 import { TodoTableRow } from './todo/TodoTableRow';
+import { useTodos } from './useTodos';
 
 export const TodosTable = () => {
   const { isPending, shownTodos } = useTodos();

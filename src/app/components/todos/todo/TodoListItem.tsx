@@ -7,7 +7,7 @@ import { ListItemIcon } from 'app/common/components/list/ListItemIcon';
 import { ListItemText } from 'app/common/components/list/ListItemText';
 import { Todo } from 'app/stores/todos/Todo';
 import classes from './TodoListItem.module.scss';
-import { useTodo } from './hooks/useTodo';
+import { useTodo } from './useTodo';
 
 type Props = {
   readonly todo: Todo;

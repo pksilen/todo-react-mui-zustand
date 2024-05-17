@@ -1,7 +1,7 @@
 import { Button } from 'app/common/components/buttons/Button';
 import { TextInput } from 'app/common/components/inputs/TextInput';
 import classes from './AddTodo.module.scss';
-import { useTodoAdding } from './hooks/useTodoAdding';
+import { useTodoAdding } from './useTodoAdding';
 
 export const AddTodo = () => {
   const { maybeAddTodo, setTodoTitle, todoTitle } = useTodoAdding();
