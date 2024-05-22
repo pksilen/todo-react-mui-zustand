@@ -3,16 +3,8 @@ import { getShownTodos } from 'app/stores/todos/todoSelectors';
 import { useTodosStore } from 'app/stores/todos/todosStore';
 
 export const useTodos = () => {
-  const { isPending, shownTodos } = useTodosStore((store) => ({
-    isPending: store.isPending,
-    shownTodos: getShownTodos(store)
-  }));
-
+  const shownTodos = useTodosStore(getShownTodos);
   const { fetchTodos } = useTodosStore((store) => store.actions);
   afterMount(fetchTodos);
-
-  return {
-    isPending,
-    shownTodos
-  };
+  return shownTodos;
 };

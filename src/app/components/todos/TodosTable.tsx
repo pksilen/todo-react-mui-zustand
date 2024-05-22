@@ -1,25 +1,20 @@
 import React from 'react';
-import { Pending } from 'app/common/components/Pending';
 import { Table } from 'app/common/components/table/Table';
-import { Heading4 } from 'app/common/components/typography/Heading4';
 import { Todo } from 'app/stores/todos/Todo';
-import classes from './Todos.module.scss';
+import { PendingTodos } from './PendingTodos';
 import { TodoTableRow } from './todo/TodoTableRow';
 import { useTodos } from './useTodos';
 
 export const TodosTable = () => {
-  const { isPending, shownTodos } = useTodos();
+  const shownTodos = useTodos();
 
   return (
-    <Pending
-      className={classes.todos}
-      fallback={isPending && <Heading4>Loading todos...</Heading4>}
-    >
+    <PendingTodos>
       <Table>
         {shownTodos.map((todo: Todo) => (
           <TodoTableRow key={todo.id} todo={todo} />
         ))}
       </Table>
-    </Pending>
+    </PendingTodos>
   );
 };
