@@ -1,6 +1,6 @@
-import { Pending } from '../../common/components/Pending';
-import { Heading4 } from '../../common/components/typography/Heading4';
-import { useTodosStore } from '../../stores/todos/todosStore';
+import { Pending } from 'app/common/components/Pending';
+import { Heading4 } from 'app/common/components/typography/Heading4';
+import { useTodosStore } from 'app/stores/todos/todosStore';
 import classes from './Todos.module.scss';
 
 type Props = Readonly<{
