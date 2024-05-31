@@ -124,8 +124,6 @@ _
 /src/app/common/components/list/ListItemIcon.tsx,5\b\5baad4ba97e9559b4e6f9d3750ab6e41dfd75b89
 _
 /src/app/common/components/list/ListItemText.tsx,9\9\99c2ffc7386b103d0adcd2fbbee6742f5ae1757d
-]
--src/app/common/components/switches/Switch.tsx,8\2\8234815fe00b7eb52adde9bc70366b655371aed9
 Y
 )src/app/common/components/table/Table.tsx,c\8\c8d5401939eeb7059cfc24d8adfb26f8ef605a3a
 ]

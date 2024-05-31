@@ -8,7 +8,7 @@ import {
   ListIcon,
   TableIcon
 } from 'app/common/components/icons/Icons';
-import { Switch } from 'app/common/components/switches/Switch';
+import { Switch } from 'app/common/components/inputs/Switch';
 import { ViewType, useControlsStore } from 'app/stores/controls/controlsStore';
 import { useTodosStore } from 'app/stores/todos/todosStore';
 import classes from './Controls.module.scss';
