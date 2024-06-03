@@ -14,31 +14,26 @@ type Props = {
 };
 
 export const TodoTableRow = ({ todo: { id, title, isDone } }: Props) => {
-  const { editableTodoId, editTodo, removeTodo, setEditableTodo, toggleTodoDone } = useTodo();
+  const { changeTitle, isEditable, remove, setAsEditable, toggleDone } = useTodo(id);
   const titleClasses = classNames(classes.title, isDone && classes.isDone);
 
   return (
     <TableRow>
       <TableCell>
-        <Checkbox
-          aria-label={title}
-          isChecked={isDone}
-          color="success"
-          onChange={() => toggleTodoDone(id)}
-        />
+        <Checkbox aria-label={title} isChecked={isDone} color="success" onChange={toggleDone} />
       </TableCell>
-      {editableTodoId === id ? (
+      {isEditable ? (
         <TableCell>
-          <EditTextInput onEditComplete={editTodo(id)} text={title} />
+          <EditTextInput onEditComplete={changeTitle} text={title} />
         </TableCell>
       ) : (
-        <TableCell className={titleClasses} onDoubleClick={() => setEditableTodo(id)}>
+        <TableCell className={titleClasses} onDoubleClick={setAsEditable}>
           {title}
         </TableCell>
       )}
       <TableCell className={classes.buttons}>
-        <IconButton icon={<EditIcon />} onClick={() => setEditableTodo(id)} />
-        <IconButton icon={<RemoveIcon />} onClick={() => removeTodo(id)} />
+        <IconButton icon={<EditIcon />} onClick={setAsEditable} />
+        <IconButton icon={<RemoveIcon />} onClick={remove} />
       </TableCell>
     </TableRow>
   );
