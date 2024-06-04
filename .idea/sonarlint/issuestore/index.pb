@@ -142,3 +142,7 @@ Y
 )src/app/components/todos/PendingTodos.tsx,3\3\3356a0578c2ac22339e0a8b29866dc14e37f7a59
 =
 tsconfig.json,6\1\61ebb9fd6e8cf9082658121d5d81e297791dacd0
+W
+'src/app/stores/controls/initialTheme.ts,4\a\4ac9c875cd75fdbdb0a0b3bfdd4603dde6c51c6a
+[
++src/app/components/addtodo/useTodoAdding.ts,9\e\9e2c4fcea598b855a639a1b5f09cc128005e77c0
